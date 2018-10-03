@@ -33,7 +33,7 @@ $botman->hears('@{userId}', function ($bot, $userId) {
     $rm = new replyMsg();
     $instaData = $rm->getLastInsta($userId);
 
-    $bot->reply($replyResult, [
+    $bot->reply([
         'type' => 'instagram',
         'imgSrc' => $instaData['imgSrc']
     ]);
