@@ -35,7 +35,8 @@ $botman->hears('@{userId}', function ($bot, $userId) {
 
     $bot->reply('inst', [
         'type' => 'instagram',
-        'imgSrc' => $instaData['imgSrc']
+        'imgSrc' => $instaData['imgSrc'],
+        'caption' => $instaData['caption']
     ]);
 
 });
