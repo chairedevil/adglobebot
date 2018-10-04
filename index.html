@@ -120,7 +120,110 @@
         function sendText(){
             $('.main-card-body').scrollTop($('.main-card-body')[0].scrollHeight);
         }
+        document.querySelector("#input").addEventListener("keyup", function(event){
+            event.preventDefault();
+            
+            if(event.keyCode === 13){
+                document.querySelector("#sendBtn").click();
+            }
+        });
+        
+        function sendText(){
+            let text = document.querySelector("#input").value;
+            console.log(text);
+            let data = new FormData();
+            
+            let item = {
+               driver: 'web',
+               userId: 'tny9rs',
+               message : text
+            };
+
+            for (let key in item) {
+                data.append(key, item[key]);
+            }
+            
+            console.log(data);
+            $.ajax({
+                url: 'https://adglobebot.herokuapp.com/botman.php',
+                data: data,
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                beforeSend: function(){
+                    $date = new Date();
+                    $sendTime = $date.getHours()+':'+$date.getMinutes();
+                    $userText = '<div class="row justify-content-end mb-1">';
+                    $userText = $userText+'<div class="card text-right">';
+                    $userText = $userText+'<div class="card-header msgHeader">User</div>';
+                    $userText = $userText+'<div class="card-body p-2">';
+                    $userText = $userText+'<p class="card-text msgBody">'+ text +'</p>';
+                    $userText = $userText+'</div>';
+                    $userText = $userText+'<div class="card-footer text-muted bg-white msgTime">'+ $sendTime +'</div>';
+                    $userText = $userText+'</div>';
+                    $userText = $userText+'</div>';
+                    
+                    $('.displayArea').append($userText);
+                    $("#input").val("");
+                    scroll();
+                },
+                
+                
+                success: function(result){
+                    let $indicator = result.messages[0].additionalParameters.type;
+                    console.log($indicator);
+                    $date2 = new Date();
+                    $replyTime = $date2.getHours()+':'+$date2.getMinutes();
+                    if($indicator == 'translate'){
+                        $botText = '<div class="row justify-content-start mb-1">';
+                        $botText = $botText+'<div class="card" style="max-width: 300px">';
+                        $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
+                        $botText = $botText+'<div class="card-body p-2">';
+                        $botText = $botText+'<p class="card-text msgBody">'+　result.messages[0].text　+'</p>';
+                        $botText = $botText+'</div>';
+                        $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                        $botText = $botText+'</div>';
+                        $botText = $botText+'</div>';
+                    
+                    }else if($indicator == 'instagram'){
+                        $botText = '<div class="row justify-content-start mb-1">';
+                        $botText = $botText+'<div class="card" style="max-width: 300px;">';
+                        $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
+                        $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.imgSrc +'" alt="" class="card-img-top instImg">';
+                        $botText = $botText+'<div class="card-body p-2">';
+                        
+                        let captionEnd = (result.messages[0].additionalParameters.caption).length>70?'...</p>':'</p>';
+                        $botText = $botText+'<p class="card-text">'+ (result.messages[0].additionalParameters.caption).substring(0,70) + captionEnd;
+                        
+                        $botText = $botText+'</div>';
+                        $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                        $botText = $botText+'</div>';
+                        $botText = $botText+'</div>';
+                        
+                    }else if($indicator == 'error'){
+                        $botText = '<div class="row justify-content-start mb-1">';
+                        $botText = $botText+'<div class="card" style="max-width: 300px">';
+                        $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
+                        $botText = $botText+'<div class="card-body p-2">';
+                        $botText = $botText+'<p class="card-text msgBody">'+　result.messages[0].text　+'</p>';
+                        $botText = $botText+'</div>';
+                        $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                        $botText = $botText+'</div>';
+                        $botText = $botText+'</div>';
+                    }
+                    
+                    $('.displayArea').append($botText);
+                    $botText = "";
+                    scroll();
+                }
+            });
+        }
+        
+        
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>
