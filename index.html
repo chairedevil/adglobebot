@@ -7,30 +7,61 @@
     <title>Adglobe Bot</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
+        .intro{
+            max-height: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .card{
+            border: none;
+            box-shadow: 0px 0px 5px #AAA;
+            margin-bottom: 20px;
+        }
+
+        .card-header{
+            background-color: #244063;
+        }
+
         .main-card{
             width:  100%;
             min-width: 300px;
         }
-        
+        .main-card-body{
+            height: 75vh;
+            max-height: 75vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
         .msgTime, .msgHeader{
             font-size: 0.6em;
             border: none;
             padding: 3px;
             min-width: 170px;
+            background-color: #f18e1e;
+            background-color: #3f628e;
+            color: #fff;
+            padding-left: 10px;
+            padding-right: 10px;
         }
-
         .msgHeader{
             font-size: 0.8em;
+            font-weight: 900;
         }
 
         .instImg{
             border-radius: 0;
         }
-
-        .main-card-body{
-            height: 75vh;
-            max-height: 75vh;
-            overflow-y: auto;
+        
+        .sendBtn{
+            background-color: #244063;
+            color: #fff;
+            font-weight: 900;
+        }
+        .sendBtn:hover{
+            background-color: #3f628e;
         }
 
     </style>
@@ -39,14 +70,17 @@
     <div class="container mt-5">
         <div class="row">
             <div class="main-card card m-auto">
-                <div class="card-header bg-warning text-white">
-                    <h3 class="m-0">Adglobe Bot</h3>
+                <div class="card-header text-white">
+                    <h1 class="m-0"><img src="img/logo_white.png" alt="adglobe"></h1>
                 </div>
                 <div class="card-body main-card-body d-flex">
                     <div class="container">
+                        <div class="row justify-content-center">
+                            <img class="intro" src="img/intro.jpg">
+                        </div>
                         <div class="row justify-content-end">
                             <div class="card text-right">
-                                <div class="card-header msgHeader">from A</div>
+                                <div class="card-header msgHeader">User</div>
                                 <div class="card-body p-2">
                                     <p class="card-text msgBody">message A</p>
                                 </div>
@@ -54,8 +88,8 @@
                             </div>
                         </div>
                         <div class="row justify-content-start">
-                            <div class="card" style="max-width: 200px;">
-                                <div class="card-header msgHeader">from Bot</div>
+                            <div class="card" style="max-width: 300px;">
+                                <div class="card-header msgHeader">Bot</div>
                                 <img src="./img/img.jpg" alt="" class="card-img-top instImg">
                                 <div class="card-body p-2">
                                     <p class="card-text">Instagram Caption</p>
@@ -68,10 +102,10 @@
                 <div class="card-footer">
                     <div class="row m-2">
                        <div class="col-10">
-                              <input class="form-control" type="text" id="input">
+                              <input class="form-control" type="text" id="input" autofocus>
                        </div>
                        <div class="col-2">
-                           <button class="btn btn-outline-warning" type=button onclick="sendText()">送信</button>
+                           <button class="btn w-100 sendBtn" type=button onclick="sendText()">送信</button>
                        </div>
                     </div>
                 </div>
