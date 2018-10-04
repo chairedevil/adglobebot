@@ -75,6 +75,10 @@ class ComposerStaticInita15e902f91a5de2896484d4e6e6d63ef
             'BotMan\\Drivers\\Web\\' => 19,
             'BotMan\\BotMan\\' => 14,
         ),
+        'A' => 
+        array (
+            'Abraham\\TwitterOAuth\\' => 21,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -173,6 +177,10 @@ class ComposerStaticInita15e902f91a5de2896484d4e6e6d63ef
         'BotMan\\BotMan\\' => 
         array (
             0 => __DIR__ . '/..' . '/botman/botman/src',
+        ),
+        'Abraham\\TwitterOAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/abraham/twitteroauth/src',
         ),
     );
 

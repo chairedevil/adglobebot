@@ -4,6 +4,7 @@
         "botman/driver-web": "^1.5",
         "dejurin/php-google-translate-for-free": "^1.0",
         "pgrimaud/instagram-user-feed": "^5.0",
-        "detectlanguage/detectlanguage": "^2.2"
+        "detectlanguage/detectlanguage": "^2.2",
+        "abraham/twitteroauth": "^0.9.2"
     }
 }

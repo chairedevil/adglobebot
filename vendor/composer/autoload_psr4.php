@@ -30,4 +30,5 @@ return array(
     'Dejurin\\' => array($vendorDir . '/dejurin/php-google-translate-for-free/src'),
     'BotMan\\Drivers\\Web\\' => array($vendorDir . '/botman/driver-web/src'),
     'BotMan\\BotMan\\' => array($vendorDir . '/botman/botman/src'),
+    'Abraham\\TwitterOAuth\\' => array($vendorDir . '/abraham/twitteroauth/src'),
 );
