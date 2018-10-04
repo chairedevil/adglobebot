@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 /// ส่วนการกำหนดค่านี้สามารถทำเป็นไฟล์ include แทนได้
 define('LINE_LOGIN_CHANNEL_ID','1612188467');
 define('LINE_LOGIN_CHANNEL_SECRET','5542059538662e028a13babd21083435');
-define('LINE_LOGIN_CALLBACK_URL','http://localhost/botman.me/linelogin.php');
+define('LINE_LOGIN_CALLBACK_URL','https://adglobebot.herokuapp.com/login_uselib_callback.php');
 
 $LineLogin = new LineLoginLib(
     LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_SECRET, LINE_LOGIN_CALLBACK_URL);
