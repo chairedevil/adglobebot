@@ -46,7 +46,9 @@ $botman->hears('hello', function (BotMan $bot) {
 });
 
 $botman->fallback(function($bot) {
-    $bot->reply('WHAT!!!');
+    $bot->reply('WHAT!!!', [
+        'type' => 'error'
+    ]);
 });
 
 // Start listening
