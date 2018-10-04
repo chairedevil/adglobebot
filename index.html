@@ -10,13 +10,13 @@
         .main-card{
             width:  100%;
             min-width: 300px;
-            height: 75vh;
         }
         
         .msgTime, .msgHeader{
             font-size: 0.6em;
             border: none;
             padding: 3px;
+            min-width: 170px;
         }
 
         .msgHeader{
@@ -25,6 +25,12 @@
 
         .instImg{
             border-radius: 0;
+        }
+
+        .main-card-body{
+            height: 75vh;
+            max-height: 75vh;
+            overflow-y: auto;
         }
 
     </style>
@@ -36,28 +42,27 @@
                 <div class="card-header bg-warning text-white">
                     <h3 class="m-0">Adglobe Bot</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body main-card-body d-flex">
                     <div class="container">
-                            <div class="row justify-content-end">
-                                <div class="card text-right">
-                                    <div class="card-header msgHeader">from A</div>
-                                    <div class="card-body p-2">
-                                        <p class="card-text msgBody">message A</p>
-                                    </div>
-                                    <div class="card-footer text-muted bg-white msgTime">01:00</div>
+                        <div class="row justify-content-end">
+                            <div class="card text-right">
+                                <div class="card-header msgHeader">from A</div>
+                                <div class="card-body p-2">
+                                    <p class="card-text msgBody">message A</p>
                                 </div>
+                                <div class="card-footer text-muted bg-white msgTime">01:00</div>
                             </div>
-                            <div class="row justify-content-start">
-                                <div class="card" style="max-width: 200px;">
-                                    <div class="card-header msgHeader">from Bot</div>
-                                    <img src="./img/img.jpg" alt="" class="card-img-top instImg">
-                                    <div class="card-body p-2">
-                                        
-                                        <p class="card-text">Instagram Caption</p>
-                                    </div>
-                                    <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
+                        </div>
+                        <div class="row justify-content-start">
+                            <div class="card" style="max-width: 200px;">
+                                <div class="card-header msgHeader">from Bot</div>
+                                <img src="./img/img.jpg" alt="" class="card-img-top instImg">
+                                <div class="card-body p-2">
+                                    <p class="card-text">Instagram Caption</p>
                                 </div>
+                                <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
                             </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -74,6 +79,11 @@
         </div>
     </div>
 
+    <script>
+        function sendText(){
+            $('.main-card-body').scrollTop($('.main-card-body')[0].scrollHeight);
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>
