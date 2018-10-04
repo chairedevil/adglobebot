@@ -30,7 +30,6 @@ if($LineLogin->verifyToken($accToken)){
     echo "Token Status OK <br>";  
 }
  
- 
 echo "<pre>";
 // Status Token Check with Result 
 //$statusToken = $LineLogin->verifyToken($accToken, true);
