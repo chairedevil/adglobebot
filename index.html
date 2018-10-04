@@ -77,11 +77,11 @@
                     <h1 class="m-0"><img src="img/logo_white.png" alt="adglobe"></h1>
                 </div>
                 <div class="card-body main-card-body d-flex">
-                    <div class="container">
+                    <div class="container displayArea">
                         <div class="row justify-content-center">
                             <img class="intro" src="img/intro.jpg">
                         </div>
-                        <div class="row justify-content-end">
+                        <!--<div class="row justify-content-end">
                             <div class="card text-right">
                                 <div class="card-header msgHeader">User</div>
                                 <div class="card-body p-2">
@@ -99,6 +99,24 @@
                                 </div>
                                 <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
                             </div>
+                        </div>-->
+                        <div class="row justify-content-start mb-1">
+                            <div class="card">
+                                <div class="card-header msgHeader">Bot</div>
+                                <div class="card-body p-2">
+                                    <p class="card-text msgBody"># + 文章又は言葉　→　翻訳</p>
+                                </div>
+                                <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start mb-1">
+                            <div class="card">
+                                <div class="card-header msgHeader">Bot</div>
+                                <div class="card-body p-2">
+                                    <p class="card-text msgBody">"@" + インスタグラムのユーザー名　→　直近投稿</p>
+                                </div>
+                                <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,7 +126,7 @@
                               <input class="form-control" type="text" id="input" autofocus>
                        </div>
                        <div class="col-2">
-                           <button class="btn w-100 sendBtn" type=button onclick="sendText()">送信</button>
+                           <button  id="sendBtn" class="btn w-100 sendBtn" type=button onclick="sendText()">送信</button>
                        </div>
                     </div>
                 </div>
@@ -117,9 +135,17 @@
     </div>
 
     <script>
-        function sendText(){
+        function scroll(){
             $('.main-card-body').scrollTop($('.main-card-body')[0].scrollHeight);
+        };
+
+        function getTime(){
+            $date = new Date();
+            $time = $date.getHours()+':'+$date.getMinutes();
+            return $time;
         }
+
+        
         document.querySelector("#input").addEventListener("keyup", function(event){
             event.preventDefault();
             
@@ -130,93 +156,125 @@
         
         function sendText(){
             let text = document.querySelector("#input").value;
-            console.log(text);
-            let data = new FormData();
-            
-            let item = {
-               driver: 'web',
-               userId: 'tny9rs',
-               message : text
-            };
+            if(text){
+                console.log(text);
+                let data = new FormData();
+                
+                let item = {
+                driver: 'web',
+                userId: 'tny9rs',
+                message : text
+                };
 
-            for (let key in item) {
-                data.append(key, item[key]);
+                for (let key in item) {
+                    data.append(key, item[key]);
+                }
+                
+                console.log(data);
+                $.ajax({
+                    url: 'https://adglobebot.herokuapp.com/botman.php',
+                    data: data,
+                    type: 'POST',
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function(){
+                        $sendTime = getTime();
+                        $userText = '<div class="row justify-content-end mb-1">';
+                        $userText = $userText+'<div class="card text-right">';
+                        $userText = $userText+'<div class="card-header msgHeader">User</div>';
+                        $userText = $userText+'<div class="card-body p-2">';
+                        $userText = $userText+'<p class="card-text msgBody">'+ text +'</p>';
+                        $userText = $userText+'</div>';
+                        $userText = $userText+'<div class="card-footer text-muted bg-white msgTime">'+ $sendTime +'</div>';
+                        $userText = $userText+'</div>';
+                        $userText = $userText+'</div>';
+                        
+                        $('.displayArea').append($userText);
+                        $("#input").val("");
+                        scroll();
+                    },
+                    
+                    success: function(result){
+                        let $indicator = result.messages[0].additionalParameters.type;
+                        //console.log($indicator);
+                        $replyTime = getTime();
+                        if($indicator == 'translate'){
+                            $botText = '<div class="row justify-content-start mb-1">';
+                            $botText = $botText+'<div class="card" style="max-width: 300px">';
+                            $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
+                            $botText = $botText+'<div class="card-body p-2">';
+                            $botText = $botText+'<p class="card-text msgBody">'+　result.messages[0].text　+'</p>';
+                            $botText = $botText+'</div>';
+                            $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                            $botText = $botText+'</div>';
+                            $botText = $botText+'</div>';
+                        
+                        }else if($indicator == 'instagram'){
+                            
+                            $botText = '<div class="row justify-content-start mb-1">';
+                            $botText = $botText+'<div class="card" style="max-width: 300px;">';
+                            $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
+                            $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.imgSrc +'" alt="" class="card-img-top instImg">';
+                            $botText = $botText+'<div class="card-body p-2">';
+                            
+                            let captionEnd = (result.messages[0].additionalParameters.caption).length>70?'...</p>':'</p>';
+                            $botText = $botText+'<p class="card-text">'+ (result.messages[0].additionalParameters.caption).substring(0,70) + captionEnd;
+                            
+                            $botText = $botText+'</div>';
+                            $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                            $botText = $botText+'</div>';
+                            $botText = $botText+'</div>';
+                            
+                        }else if($indicator == 'error'){
+                            $botText = '<div class="row justify-content-start mb-1">';
+                            $botText = $botText+'<div class="card" style="max-width: 300px">';
+                            $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
+                            $botText = $botText+'<div class="card-body p-2">';
+                            $botText = $botText+'<p class="card-text msgBody">'+　result.messages[0].text　+'</p>';
+                            $botText = $botText+'</div>';
+                            $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                            $botText = $botText+'</div>';
+                            $botText = $botText+'</div>';
+                        }
+                        
+                        $('.displayArea').append($botText);
+                        $botText = "";
+                        scroll();
+                    }, error: function(){
+                        $replyTime = getTime();
+                        $botText = '<div class="row justify-content-start mb-1">';
+                        $botText = $botText+'<div class="card" style="max-width: 300px">';
+                        $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
+                        $botText = $botText+'<div class="card-body p-2">';
+                        $botText = $botText+'<p class="card-text msgBody">入力エラー！！！</p>';
+                        $botText = $botText+'</div>';
+                        $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                        $botText = $botText+'</div>';
+                        $botText = $botText+'</div>';
+
+                        $('.displayArea').append($botText);
+                        $botText = "";
+                        scroll();
+                    }
+                });
+            }else{
+                console.log("no text");
+                $replyTime = getTime();
+                $botText = '<div class="row justify-content-start mb-1">';
+                $botText = $botText+'<div class="card" style="max-width: 300px">';
+                $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
+                $botText = $botText+'<div class="card-body p-2">';
+                $botText = $botText+'<p class="card-text msgBody">入力してください！！</p>';
+                $botText = $botText+'</div>';
+                $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                $botText = $botText+'</div>';
+                $botText = $botText+'</div>';
+
+                $('.displayArea').append($botText);
+                $botText = "";
+                scroll();
             }
             
-            console.log(data);
-            $.ajax({
-                url: 'https://adglobebot.herokuapp.com/botman.php',
-                data: data,
-                type: 'POST',
-                processData: false,
-                contentType: false,
-                beforeSend: function(){
-                    $date = new Date();
-                    $sendTime = $date.getHours()+':'+$date.getMinutes();
-                    $userText = '<div class="row justify-content-end mb-1">';
-                    $userText = $userText+'<div class="card text-right">';
-                    $userText = $userText+'<div class="card-header msgHeader">User</div>';
-                    $userText = $userText+'<div class="card-body p-2">';
-                    $userText = $userText+'<p class="card-text msgBody">'+ text +'</p>';
-                    $userText = $userText+'</div>';
-                    $userText = $userText+'<div class="card-footer text-muted bg-white msgTime">'+ $sendTime +'</div>';
-                    $userText = $userText+'</div>';
-                    $userText = $userText+'</div>';
-                    
-                    $('.displayArea').append($userText);
-                    $("#input").val("");
-                    scroll();
-                },
-                
-                
-                success: function(result){
-                    let $indicator = result.messages[0].additionalParameters.type;
-                    console.log($indicator);
-                    $date2 = new Date();
-                    $replyTime = $date2.getHours()+':'+$date2.getMinutes();
-                    if($indicator == 'translate'){
-                        $botText = '<div class="row justify-content-start mb-1">';
-                        $botText = $botText+'<div class="card" style="max-width: 300px">';
-                        $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
-                        $botText = $botText+'<div class="card-body p-2">';
-                        $botText = $botText+'<p class="card-text msgBody">'+　result.messages[0].text　+'</p>';
-                        $botText = $botText+'</div>';
-                        $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
-                        $botText = $botText+'</div>';
-                        $botText = $botText+'</div>';
-                    
-                    }else if($indicator == 'instagram'){
-                        $botText = '<div class="row justify-content-start mb-1">';
-                        $botText = $botText+'<div class="card" style="max-width: 300px;">';
-                        $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
-                        $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.imgSrc +'" alt="" class="card-img-top instImg">';
-                        $botText = $botText+'<div class="card-body p-2">';
-                        
-                        let captionEnd = (result.messages[0].additionalParameters.caption).length>70?'...</p>':'</p>';
-                        $botText = $botText+'<p class="card-text">'+ (result.messages[0].additionalParameters.caption).substring(0,70) + captionEnd;
-                        
-                        $botText = $botText+'</div>';
-                        $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
-                        $botText = $botText+'</div>';
-                        $botText = $botText+'</div>';
-                        
-                    }else if($indicator == 'error'){
-                        $botText = '<div class="row justify-content-start mb-1">';
-                        $botText = $botText+'<div class="card" style="max-width: 300px">';
-                        $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
-                        $botText = $botText+'<div class="card-body p-2">';
-                        $botText = $botText+'<p class="card-text msgBody">'+　result.messages[0].text　+'</p>';
-                        $botText = $botText+'</div>';
-                        $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
-                        $botText = $botText+'</div>';
-                        $botText = $botText+'</div>';
-                    }
-                    
-                    $('.displayArea').append($botText);
-                    $botText = "";
-                    scroll();
-                }
-            });
         }
         
         

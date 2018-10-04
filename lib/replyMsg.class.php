@@ -35,7 +35,6 @@
             $api->setUserName($userId);
 
             try {
-
                 $feed = $api->getFeed();
                 $thumSrc = $feed->getMedias()[0]->getThumbnailSrc();
                 $imgSrc = $feed->getMedias()[0]->getDisplaySrc();

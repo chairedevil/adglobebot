@@ -31,14 +31,18 @@ $botman->hears('#{word}', function ($bot, $word) {
 $botman->hears('@{userId}', function ($bot, $userId) {
 
     $rm = new replyMsg();
+
     $instaData = $rm->getLastInsta($userId);
+    
+        $bot->reply('inst', [
+            'type' => 'instagram',
+            'imgSrc' => $instaData['imgSrc'],
+            'caption' => $instaData['caption']
+        ]);
+    
 
-    $bot->reply('inst', [
-        'type' => 'instagram',
-        'imgSrc' => $instaData['imgSrc'],
-        'caption' => $instaData['caption']
-    ]);
-
+    
+    
 });
 
 $botman->hears('hello', function (BotMan $bot) {
