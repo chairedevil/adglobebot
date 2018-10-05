@@ -135,7 +135,7 @@
                                 </form>
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php echo $_SESSION['ses_login_accToken_val']; } ?>
 
 
                 </div>
