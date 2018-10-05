@@ -68,12 +68,17 @@
                 $statuses = $connection->get("statuses/user_timeline", ["screen_name" => $userId, "count" => 1]);
 
                 $tweet = array();
-                $tweet['error'] = false;
-                $tweet['screen_name'] = $statuses[0]->user->screen_name;
-                $tweet['name'] = $statuses[0]->user->name;
-                $tweet['text'] = $statuses[0]->text;
-                $tweet['created_at'] = $statuses[0]->created_at;
-                $tweet['media'] = $statuses[0]->entities->media[0]->media_url;
+
+                if(isset($statuses->errors[0]->message)){
+                    $tweet['error'] = $statuses->errors[0]->message;
+                }else{
+                    $tweet['error'] = false;
+                    $tweet['screen_name'] = $statuses[0]->user->screen_name;
+                    $tweet['name'] = $statuses[0]->user->name;
+                    $tweet['text'] = $statuses[0]->text;
+                    $tweet['created_at'] = $statuses[0]->created_at;
+                    $tweet['media'] = $statuses[0]->entities->media[0]->media_url;
+                }
 
             } else {
                 // Handle error case
