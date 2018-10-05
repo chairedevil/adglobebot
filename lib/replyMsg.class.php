@@ -62,6 +62,8 @@
             $access_token_secret = "EoTp7Evg15OCW04zMYshyK8h4FifhB3SXfaYNMfRKlZWy";
 
             $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token, $access_token_secret);
+            $content = $connection->get("account/verify_credentials");
+
             if ($connection->getLastHttpCode() == 200) {
                 // Tweet posted succesfully
                 $content = $connection->get("account/verify_credentials");
