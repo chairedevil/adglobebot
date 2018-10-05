@@ -18,3 +18,6 @@ $response = $client->post('https://api.line.me/v2/bot/message/push', [
         ]
         ]
 ]);
+
+echo '<pre>' . var_export($response->getStatusCode(), true) . '</pre>';
+echo '<pre>' . var_export($response->getBody()->getContents(), true) . '</pre>';
