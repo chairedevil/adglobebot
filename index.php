@@ -1,16 +1,18 @@
 <?php
     session_start();
 
+    require_once("lib/test_login_lib.php");
+
     $accToken = "";
     if(isset($_SESSION["ses_login_accToken_val"])){
         $accToken = $_SESSION["ses_login_accToken_val"];
+
+        $userInfo = $LineLogin->userProfile($accToken,true);
+        if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
+            print_r($userInfo);
+        }
     }
 
-    $userInfo = "";
-    if(isset($_SESSION["userInfo"])){
-        $userInfo = $_SESSION["userInfo"];
-    }
-    echo $userInfo;
 ?>
 
 <!DOCTYPE html>
@@ -150,7 +152,6 @@
 
 
                 </div>
-                <?php echo $userInfo ?>
                 <div class="card-body main-card-body d-flex">
                     <div class="container displayArea">
                         <img class="intro mb-4" src="img/intro.png">
