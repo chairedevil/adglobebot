@@ -16,11 +16,39 @@
 
     $accToken = $_SESSION['ses_login_accToken_val'];
 
-    echo $accToken."<br><hr>";
-    echo "before verify <br>";
-
-    if($LineLogin->verifyToken($accToken)){
+    if($accToken){
         echo $accToken."<br><hr>";
-        echo "Token Status OK <br>";  
+    }
+
+    $userInfo = $LineLogin->userProfile($accToken,true);
+    if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
+        print_r($userInfo);
+    }
+
+    if($accToken){
+    ?>
+    <form method="post">
+    <button type="submit" name="lineLogout">LINE Logout</button>
+    </form>
+    <?php }else{ ?>
+    <form method="post">
+    <button type="submit" name="lineLogin">LINE Login</button>
+    </form>   
+    <?php } ?>
+
+    <?php
+    if(isset($_POST["lineLogin"])){
+        $LineLogin->authorize(); 
+        exit;
+    }else if(isset($_POST["lineLogout"])){
+        $accToken = "";
+        unset($_SESSION['ses_login_accToken_val']);
+
+        if($LineLogin->revokeToken($accToken)){
+            echo "log out successful";
+        }
+        echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
+        $LineLogin->redirect('test_login.php');
+        
     }
 
