@@ -7,11 +7,13 @@
     if(isset($_SESSION["ses_login_accToken_val"])){
         $accToken = $_SESSION["ses_login_accToken_val"];
 
-        $userData = [];
-        if(isset($_SESSION["userData"])){
-            $userData = $_SESSION["userData"];
+        $userInfo = [];
+        if(isset($_SESSION["userInfo"])){
+            $userInfo = $_SESSION["userInfo"];
         }
-        print_r($userData);
+        echo"<pre>";
+        print_r($userInfo);
+        echo"</pre>";
     }
 
 ?>
