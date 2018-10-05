@@ -150,6 +150,7 @@
 
 
                 </div>
+                <?php echo $userInfo ?>
                 <div class="card-body main-card-body d-flex">
                     <div class="container displayArea">
                         <img class="intro mb-4" src="img/intro.png">
