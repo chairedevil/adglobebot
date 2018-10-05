@@ -27,6 +27,12 @@
             echo "<br>userInfo: ";
             print_r($userInfo);
         }
+        $_SESSION["userInfo"] = $userInfo;
+        echo "<br>";
+        echo "<pre>";
+        print_r($_SESSION["userInfo"]);
+        echo "</pre>";
+        
         if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
             $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
             $_SESSION["userData"] = [
