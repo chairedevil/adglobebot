@@ -9,10 +9,10 @@
 
         //echo $accToken;
 
-        $userInfo = $LineLogin->userProfile($accToken,true);
+        /*$userInfo = $LineLogin->userProfile($accToken,true);
         if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
             print_r($userInfo);
-        }
+        }*/
     }
 
 ?>
