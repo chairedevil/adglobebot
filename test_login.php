@@ -46,8 +46,10 @@
     }else if($_POST["lineLogout"]){
         unset($_SESSION['ses_login_accToken_val']);
 
-        $LineLogin->revokeToken($accToken);
+        if($LineLogin->revokeToken($accToken)){
+            echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
+        }
 
-        echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
+        
     }
 
