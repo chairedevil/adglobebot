@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    $userInfor = "";
+    if(isset($_SESSION["userInfo"])){
+        $userInfo = $_SESSION["userInfo"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -116,12 +121,12 @@
                 <div class="card-header text-white d-flex justify-content-center align-items-center">
                     <img class="m-4 mr-auto" src="img/logo_white.png" alt="adglobe">
                     <!--not login-->
-                    <?php if(!isset($_SESSION['userInfo'])){ ?>
+                    <?php if($userInfo==""){ ?>
                     <button class="lineBtn" onclick="click(lineLogin)"></button>
                     <form action="test_login.php" method="POST">
                         <input type="submit" name="lineLogin" id="lineLogin" style="display:none;">
                     </form>
-                    <?php echo $_SESSION['userInfo']; }else{ ?>
+                    <?php echo $userInfo; }else{ ?>
                     <!--already login-->
                     <div class="dropdown dropleft">
                         <button class="btn btn-secondary dropdown-toggle profileIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -135,7 +140,7 @@
                                 </form>
                         </div>
                     </div>
-                    <?php echo $_SESSION['userInfo']; } ?>
+                    <?php echo $userInfo; } ?>
 
 
                 </div>
