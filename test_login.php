@@ -32,6 +32,9 @@
                 "userPic" => $lineUserData['picture']
             ];
         }
+        echo "<pre>";
+        print_r($_SESSION["userData"]);
+        echo "</pre>";
 
     }else if(isset($_POST["lineLogout"])){
         $accToken = "";
@@ -43,8 +46,8 @@
         }
     }
     
-    header("Location: index.php");
-    exit;
+    //header("Location: index.php");
+    //exit;
 
     if($accToken){
     ?>
