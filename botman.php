@@ -40,9 +40,16 @@ $botman->hears('@{userId}', function ($bot, $userId) {
             'caption' => $instaData['caption']
         ]);
     
+});
 
+$botman->hears('@{userId}', function ($bot, $userId) {
+
+    $rm = new replyMsg();
+
+    $tweetData = $rm->getLastTweet($userId);
     
     
+
 });
 
 $botman->hears('hello', function (BotMan $bot) {

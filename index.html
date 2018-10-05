@@ -195,20 +195,20 @@
         function sendText(){
             let text = document.querySelector("#input").value;
             if(text){
-                console.log(text);
+                //console.log(text);
                 let data = new FormData();
                 
                 let item = {
-                driver: 'web',
-                userId: 'tny9rs',
-                message : text
+                    driver: 'web',
+                    userId: 'adglobe',
+                    message : text
                 };
 
                 for (let key in item) {
                     data.append(key, item[key]);
                 }
                 
-                console.log(data);
+                //console.log(data);
                 $.ajax({
                     url: 'https://adglobebot.herokuapp.com/botman.php',
                     data: data,
