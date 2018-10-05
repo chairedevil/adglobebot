@@ -37,13 +37,11 @@
 
             try {
                 $feed = $api->getFeed();
-                $thumSrc = $feed->getMedias()[0]->getThumbnailSrc();
-                $imgSrc = $feed->getMedias()[0]->getDisplaySrc();
-                $caption = $feed->getMedias()[0]->getCaption();
                 $img = array();
-                $img['thumSrc'] = $thumSrc;
-                $img['imgSrc'] = $imgSrc;
-                $img['caption'] = $caption;
+                $img['username'] = $feed->getUserName();
+                $img['thumSrc'] = $feed->getMedias()[0]->getThumbnailSrc();
+                $img['imgSrc'] = $feed->getMedias()[0]->getDisplaySrc();
+                $img['caption'] = $feed->getMedias()[0]->getCaption();
 
             } catch (Exception $exception) {
                 print_r($exception->getMessage());
