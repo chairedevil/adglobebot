@@ -8,7 +8,7 @@
         $accToken = $_SESSION["ses_login_accToken_val"];
 
         $userData = [];
-        if(isset($_SESSION["userInfo"])){
+        if(isset($_SESSION["userData"])){
             $userData = $_SESSION["userData"];
         }
         print_r($userData);
