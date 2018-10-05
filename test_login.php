@@ -24,6 +24,7 @@
     
         $userInfo = $LineLogin->userProfile($accToken,true);
         if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
+            echo "<br>userInfo: ";
             print_r($userInfo);
         }
         if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
@@ -33,7 +34,7 @@
                 "userPic" => $lineUserData['picture']
             ];
         }
-        
+        echo "<br>userData: ";
         echo "<pre>";
         print_r($_SESSION["userData"]);
         echo "</pre>";
@@ -49,8 +50,8 @@
         }
     }
     
-    header("Location: index.php");
-    exit;
+    //header("Location: index.php");
+    //exit;
 
     if($accToken){
     ?>
