@@ -106,11 +106,12 @@
 
         .profileIcon{
             border-radius: 5px;
-            background-image: url(img/user-image.png);/*profile pic*/
+            background-image: url(<?= $userInfo["pictureUrl"] ?>);/*profile pic*/
             background-repeat: none;
             background-size: contain;
             height: 50px;
             width: 50px;
+            box-shadow: none;
         }
 
         #logout:hover{
@@ -145,8 +146,7 @@
                               
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Logout</a>
-                            <p class="dropdown-item" id="logout" onclick="submit('lineLogout')">Logout2</p>
+                            <p class="dropdown-item" id="logout" onclick="submit('lineLogout')">ログアウト</p>
                                 <form action="test_login.php" method="POST" id="lineLogout">
                                     <input type="text" name="lineLogout" value="lineLogout" style="display:none;">
                                 </form>
@@ -261,7 +261,7 @@
                         $sendTime = getTime();
                         $userText = '<div class="row justify-content-end mb-1">';
                         $userText = $userText+'<div class="card text-right">';
-                        $userText = $userText+'<div class="card-header msgHeader">User</div>';
+                        $userText = $userText+'<div class="card-header msgHeader"><?= $userInfo["displayName"] ?></div>';
                         $userText = $userText+'<div class="card-body p-2">';
                         $userText = $userText+'<p class="card-text msgBody">'+ text +'</p>';
                         $userText = $userText+'</div>';
