@@ -25,7 +25,8 @@
         if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
             print_r($userInfo);
         }
-        
+        $_SESSION["userInfo"] = $userInfo;
+
     }else if(isset($_POST["lineLogout"])){
         $accToken = "";
         unset($_SESSION['ses_login_accToken_val']);
@@ -62,7 +63,7 @@
             echo "log out successful";
         }
         echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
-        //$LineLogin->redirect('test_login.php');
+        $LineLogin->redirect('test_login.php');
         
     }
     
