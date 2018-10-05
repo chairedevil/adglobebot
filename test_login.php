@@ -8,7 +8,7 @@
     define('LINE_LOGIN_CALLBACK_URL','https://adglobebot.herokuapp.com/test_login_callback.php');
 
     $LineLogin = new LineLoginLib(LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_SECRET, LINE_LOGIN_CALLBACK_URL);
-
+    echo "here";
     if(isset($_POST["lineLogin"])){
         if(!isset($_SESSION['ses_login_accToken_val'])){    
             $LineLogin->authorize(); 
@@ -32,7 +32,7 @@
                 "userPic" => $lineUserData['picture']
             ];
         }
-        echo "here";
+        echo "here1";
         echo "<pre>";
         print_r($_SESSION["userData"]);
         echo "</pre>";
