@@ -30,7 +30,7 @@
     }else if(isset($_POST["lineLogout"])){
         $accToken = "";
         unset($_SESSION['ses_login_accToken_val']);
-        
+        unset($_SESSION["userInfo"]);
 
         if($LineLogin->revokeToken($accToken)){
             echo "<script>console.log('log out successful');</script>";
