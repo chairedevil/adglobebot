@@ -35,6 +35,7 @@
             ];
         }
         echo "<br>userData: ";
+        echo "lineUserData: ".$lineUserData."<br>";
         echo "<pre>";
         print_r($_SESSION["userData"]);
         echo "</pre>";
