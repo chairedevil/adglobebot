@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    $userInfo = "";
-    if(isset($_SESSION["userInfo"])){
-        $userInfo = $_SESSION["userInfo"];
+    $accToken = "";
+    if(isset($_SESSION["ses_login_accToken_val"])){
+        $accToken = $_SESSION["ses_login_accToken_val"];
     }
 ?>
 
@@ -121,12 +121,12 @@
                 <div class="card-header text-white d-flex justify-content-center align-items-center">
                     <img class="m-4 mr-auto" src="img/logo_white.png" alt="adglobe">
                     <!--not login-->
-                    <?php if($userInfo==""){ ?>
+                    <?php if($accToken==""){ ?>
                     <button class="lineBtn" onclick="submit('lineLogin')"></button>
                     <form action="test_login.php" method="POST" id="lineLogin">
                         <input type="text" name="lineLogin" value="lineLogin" style="display:none;">
                     </form>
-                    <?php echo $userInfo; }else{ ?>
+                    <?php }else{ ?>
                     <!--already login-->
                     <div class="dropdown dropleft">
                         <button class="btn btn-secondary dropdown-toggle profileIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -140,7 +140,7 @@
                                 </form>
                         </div>
                     </div>
-                    <?php echo $userInfo; } ?>
+                    <?php echo $accToken; } ?>
 
 
                 </div>
