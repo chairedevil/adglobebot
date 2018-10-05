@@ -75,7 +75,6 @@
             height: 33px;
             width: 113.625px;
             background-color: transparent;
-            display: none;
         }
         .lineBtn:hover{
             background-image: url(img/btn_login_hover.png);
@@ -86,7 +85,7 @@
 
         .profileIcon{
             border-radius: 5px;
-            background-image: url(img/user-image.png);
+            background-image: url(img/user-image.png);/*profile pic*/
             background-repeat: none;
             background-size: contain;
             height: 50px;
@@ -108,15 +107,19 @@
             <div class="main-card card">
                 <div class="card-header text-white d-flex justify-content-center align-items-center">
                     <img class="m-4 mr-auto" src="img/logo_white.png" alt="adglobe">
+                    <!--not login-->
                     <button class="lineBtn"></button>
+
+                    <!--already login-->
                     <div class="dropdown dropleft">
-                            <button class="btn btn-secondary dropdown-toggle profileIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle profileIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Logout</a>
-                            </div>
-                          </div>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="card-body main-card-body d-flex">
                     <div class="container displayArea">
