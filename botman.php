@@ -70,7 +70,7 @@ $botman->hears('皆に：{text}', function ($bot, $text) {
     
     $users = [
         'U38ff315ae4113e8334945ab5a7349ef9',
-        'U38ff315ae4113e8334945ab5a7349ef9'
+        'U370a105a6ddfc9ce13dcfbb048bc2aa9'
     ];
 
     foreach($users as $user){

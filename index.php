@@ -106,7 +106,7 @@
 
         .profileIcon{
             border-radius: 5px;
-            background-image: url(img/user-image.png);/*profile pic*/
+            background-image: url(<?= $userInfo["pictureUrl"] ?>);/*profile pic*/
             background-repeat: none;
             background-size: contain;
             height: 50px;
@@ -261,7 +261,7 @@
                         $sendTime = getTime();
                         $userText = '<div class="row justify-content-end mb-1">';
                         $userText = $userText+'<div class="card text-right">';
-                        $userText = $userText+'<div class="card-header msgHeader">User</div>';
+                        $userText = $userText+'<div class="card-header msgHeader"><?= $userInfo["displayName"] ?></div>';
                         $userText = $userText+'<div class="card-body p-2">';
                         $userText = $userText+'<p class="card-text msgBody">'+ text +'</p>';
                         $userText = $userText+'</div>';
