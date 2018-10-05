@@ -70,7 +70,8 @@
                 $tweet = array();
 
                 if(isset($statuses->errors[0]->message)){
-                    $tweet['error'] = $statuses->errors[0]->message;
+                    $tweet['error'] = true;
+                    $tweet['errMsg'] = $statuses->errors[0]->message;
                 }else{
                     $tweet['error'] = false;
                     $tweet['screen_name'] = $statuses[0]->user->screen_name;
@@ -83,6 +84,7 @@
             } else {
                 // Handle error case
                 $tweet['error'] = true;
+                $tweet['errMsg'] = 'connection error';
             }
 
             return $tweet;
