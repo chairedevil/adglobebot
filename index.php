@@ -111,6 +111,7 @@
             background-size: contain;
             height: 50px;
             width: 50px;
+            box-shadow: none;
         }
 
         #logout:hover{
@@ -145,8 +146,7 @@
                               
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Logout</a>
-                            <p class="dropdown-item" id="logout" onclick="submit('lineLogout')">Logout2</p>
+                            <p class="dropdown-item" id="logout" onclick="submit('lineLogout')">ログアウト</p>
                                 <form action="test_login.php" method="POST" id="lineLogout">
                                     <input type="text" name="lineLogout" value="lineLogout" style="display:none;">
                                 </form>
