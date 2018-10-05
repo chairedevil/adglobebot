@@ -59,12 +59,6 @@ $botman->hears('t@{userId}', function ($bot, $userId) {
             'media' => $tweetData['media']
         ]);
 
-        $tweet['screen_name'] = $statuses[0]->user->screen_name;
-        $tweet['name'] = $statuses[0]->user->name;
-        $tweet['text'] = $statuses[0]->text;
-        $tweet['created_at'] = $statuses[0]->created_at;
-        $tweet['media'] = $statuses[0]->entities->media[0]->media_url;
-
     }
 
 });
