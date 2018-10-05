@@ -32,6 +32,7 @@
                 "userPic" => $lineUserData['picture']
             ];
         }
+        echo "here";
         echo "<pre>";
         print_r($_SESSION["userData"]);
         echo "</pre>";
