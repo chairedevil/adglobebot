@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once("./lib/test_login_lib.php");
+require_once("lib/test_login_lib.php");
 
 define('LINE_LOGIN_CHANNEL_ID','1612188467');
 define('LINE_LOGIN_CHANNEL_SECRET','5542059538662e028a13babd21083435');
