@@ -9,21 +9,33 @@
 
     $LineLogin = new LineLoginLib(LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_SECRET, LINE_LOGIN_CALLBACK_URL);
 
-    if(!isset($_SESSION['ses_login_accToken_val'])){    
-        $LineLogin->authorize(); 
-        exit;
-    }
+    if(isset($_POST["lineLogin"])){
+        if(!isset($_SESSION['ses_login_accToken_val'])){    
+            $LineLogin->authorize(); 
+            exit;
+        }
+    
+        $accToken = $_SESSION['ses_login_accToken_val'];
+    
+        if($accToken){
+            echo $accToken."<br><hr>";
+        }
+    
+        $userInfo = $LineLogin->userProfile($accToken,true);
+        if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
+            print_r($userInfo);
+        }
+    }else if(isset($_POST["lineLogout"])){
+        $accToken = "";
+        unset($_SESSION['ses_login_accToken_val']);
 
-    $accToken = $_SESSION['ses_login_accToken_val'];
-
-    if($accToken){
-        echo $accToken."<br><hr>";
+        if($LineLogin->revokeToken($accToken)){
+            echo "log out successful";
+        }
     }
-
-    $userInfo = $LineLogin->userProfile($accToken,true);
-    if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
-        print_r($userInfo);
-    }
+    
+    header("Location: index.php");
+    exit;
 
     if($accToken){
     ?>
@@ -51,6 +63,5 @@
         //$LineLogin->redirect('test_login.php');
         
     }
-    header("Location: index.php");
-    exit;
+    
 
