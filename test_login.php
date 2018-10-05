@@ -8,13 +8,14 @@
     define('LINE_LOGIN_CALLBACK_URL','https://adglobebot.herokuapp.com/test_login_callback.php');
 
     $LineLogin = new LineLoginLib(LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_SECRET, LINE_LOGIN_CALLBACK_URL);
-
-    if(isset($_POST["lineLogin"])){
+    echo "here";
+    
+        echo "here1";
         if(!isset($_SESSION['ses_login_accToken_val'])){    
             $LineLogin->authorize(); 
             exit;
         }
-    
+        echo "here2";
         $accToken = $_SESSION['ses_login_accToken_val'];
     
         if($accToken){
@@ -23,6 +24,7 @@
     
         $userInfo = $LineLogin->userProfile($accToken,true);
         if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
+            echo "<br>userInfo: ";
             print_r($userInfo);
         }
         if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
@@ -32,12 +34,13 @@
                 "userPic" => $lineUserData['picture']
             ];
         }
-        echo "here";
+        echo "<br>userData: ";
         echo "<pre>";
         print_r($_SESSION["userData"]);
         echo "</pre>";
 
-    }else if(isset($_POST["lineLogout"])){
+    if(isset($_POST["lineLogout"])){
+        echo "here3";
         $accToken = "";
         unset($_SESSION['ses_login_accToken_val']);
         unset($_SESSION["userInfo"]);
@@ -62,6 +65,7 @@
     <?php } ?>
 
     <?php
+    /*
     if(isset($_POST["lineLogin"])){
         $LineLogin->authorize(); 
         exit;
@@ -75,6 +79,6 @@
         echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
         $LineLogin->redirect('test_login.php');
         
-    }
+    }*/
     
 
