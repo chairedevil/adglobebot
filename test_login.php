@@ -5,7 +5,7 @@
 
     define('LINE_LOGIN_CHANNEL_ID','1612188467');
     define('LINE_LOGIN_CHANNEL_SECRET','5542059538662e028a13babd21083435');
-    define('LINE_LOGIN_CALLBACK_URL','https://adglobebot.herokuapp.com/line_uselib_callback.php');
+    define('LINE_LOGIN_CALLBACK_URL','https://adglobebot.herokuapp.com/login_uselib_callback.php');
 
     $LineLogin = new LineLoginLib(LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_SECRET, LINE_LOGIN_CALLBACK_URL);
 
