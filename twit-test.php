@@ -15,7 +15,7 @@ $content = $connection->get("account/verify_credentials");
 
 //$statuses = $connection->get("statuses/home_timeline", ["count" => 1, "exclude_replies" => true]);
 //$statuses = $connection->get("statuses/user_timeline", ["screen_name" => "dragalialost", "count" => 1]);
-$statuses = $connection->get("statuses/user_timeline", ["screen_name" => "chairedevil", "count" => 1]);
+$statuses = $connection->get("statuses/user_timeline", ["screen_name" => "chairedevilsss", "count" => 1]);
 
 //echo '<pre>';
 //print_r($statuses[0]->user->screen_name);
