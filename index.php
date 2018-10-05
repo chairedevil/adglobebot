@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    $userInfo = "";
+    if(isset($_SESSION["userInfo"])){
+        $userInfo = $_SESSION["userInfo"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -116,12 +121,12 @@
                 <div class="card-header text-white d-flex justify-content-center align-items-center">
                     <img class="m-4 mr-auto" src="img/logo_white.png" alt="adglobe">
                     <!--not login-->
-                    <?php if(!isset($_SESSION['ses_login_accToken_val'])){ ?>
-                    <!--<a href="test_login.php"><button class="lineBtn"></button></a>-->
-                    <form action="test_login.php" method="POST">
-                        <input type="submit" class="lineBtn" name="lineLogin" value="">
+                    <?php if($userInfo==""){ ?>
+                    <button class="lineBtn" onclick="submit('lineLogin')"></button>
+                    <form action="test_login.php" method="POST" id="lineLogin">
+                        <input type="text" name="lineLogin" value="lineLogin" style="display:none;">
                     </form>
-                    <?php echo $_SESSION['ses_login_accToken_val']; }else{ ?>
+                    <?php echo $userInfo; }else{ ?>
                     <!--already login-->
                     <div class="dropdown dropleft">
                         <button class="btn btn-secondary dropdown-toggle profileIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -129,13 +134,13 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Logout</a>
-                            <p class="dropdown-item" id="logout" onclick="logoutClick()">Logout2</p>
-                                <form action="test_login.php">
-                                    <input type="submit" name="lineLogout" id="lineLogout" style="display:none;">
+                            <p class="dropdown-item" id="logout" onclick="submit('lineLogout')">Logout2</p>
+                                <form action="test_login.php" method="POST" id="lineLogout">
+                                    <input type="text" name="lineLogout" value="lineLogout" style="display:none;">
                                 </form>
                         </div>
                     </div>
-                    <?php echo $_SESSION['ses_login_accToken_val']; } ?>
+                    <?php echo $userInfo; } ?>
 
 
                 </div>
@@ -198,8 +203,8 @@
             $('.main-card-body').scrollTop($('.main-card-body')[0].scrollHeight);
         };
 
-        function logoutClick(){
-            $("#lineLogout").click();
+        function submit(id){
+            $("#"+id).submit();
         }
 
         function getTime(){

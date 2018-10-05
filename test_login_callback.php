@@ -14,12 +14,12 @@
         if(array_key_exists('access_token',$dataToken)){
             $_SESSION['ses_login_accToken_val'] = $dataToken['access_token'];
         }
-        if(array_key_exists('refresh_token',$dataToken)){
+        /*if(array_key_exists('refresh_token',$dataToken)){
             $_SESSION['ses_login_refreshToken_val'] = $dataToken['refresh_token'];
         }   
         if(array_key_exists('id_token',$dataToken)){
             $_SESSION['ses_login_userData_val'] = $dataToken['user'];
-        }       
+        }   */    
     }
     $LineLogin->redirect('test_login.php');
 ?>
