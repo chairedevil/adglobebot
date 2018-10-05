@@ -43,10 +43,11 @@
     <?php } ?>
 
     <?php
-    if($_POST["lineLogin"]){
+    if(isset($_POST["lineLogin"])){
         $LineLogin->authorize(); 
         exit;
-    }else if($_POST["lineLogout"]){
+    }else if(isset($_POST["lineLogout"])){
+        $accToken = "";
         unset($_SESSION['ses_login_accToken_val']);
 
         if($LineLogin->revokeToken($accToken)){
