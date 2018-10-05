@@ -27,18 +27,19 @@
 
     if($accToken){
     ?>
-    <form method="post">
+    <!--<form method="post">
     <button type="submit" name="lineLogout">LINE Logout</button>
     </form>
     <?php }else{ ?>
     <form method="post">
     <button type="submit" name="lineLogin">LINE Login</button>
-    </form>   
+    </form>   -->
     <?php } ?>
 
     <?php
     if(isset($_POST["lineLogin"])){
         $LineLogin->authorize(); 
+        $LineLogin->redirect('index.php');
         exit;
     }else if(isset($_POST["lineLogout"])){
         $accToken = "";
@@ -48,7 +49,8 @@
             echo "log out successful";
         }
         echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
-        $LineLogin->redirect('test_login.php');
+        //$LineLogin->redirect('test_login.php');
+        $LineLogin->redirect('index.php');
         
     }
 
