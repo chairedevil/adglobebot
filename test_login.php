@@ -31,7 +31,7 @@
         session_destroy();
 
         if($LineLogin->revokeToken($accToken)){
-            echo "log out successful";
+            echo "<script>console.log('log out successful');</script>";
         }
     }
     
