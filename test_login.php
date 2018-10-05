@@ -48,7 +48,7 @@
             echo "log out successful";
         }
         echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
-        $LineLogin->redirect('test_login.php');
+        //$LineLogin->redirect('test_login.php');
         
     }
     header("Location: index.php");
