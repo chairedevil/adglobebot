@@ -122,7 +122,7 @@
                     <img class="m-4 mr-auto" src="img/logo_white.png" alt="adglobe">
                     <!--not login-->
                     <?php if($userInfo==""){ ?>
-                    <button class="lineBtn" onclick="click(lineLogin)"></button>
+                    <button class="lineBtn" onclick="click('lineLogin')"></button>
                     <form action="test_login.php" method="POST">
                         <input type="submit" name="lineLogin" id="lineLogin" style="display:none;">
                     </form>
@@ -134,7 +134,7 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Logout</a>
-                            <p class="dropdown-item" id="logout" onclick="click(lineLogout)">Logout2</p>
+                            <p class="dropdown-item" id="logout" onclick="click('lineLogout')">Logout2</p>
                                 <form action="test_login.php">
                                     <input type="submit" name="lineLogout" id="lineLogout" style="display:none;">
                                 </form>
