@@ -25,6 +25,7 @@
         if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
             print_r($userInfo);
         }
+        
     }else if(isset($_POST["lineLogout"])){
         $accToken = "";
         unset($_SESSION['ses_login_accToken_val']);
