@@ -19,7 +19,7 @@
 
         .card{
             border: none;
-            box-shadow: 0px 0px 3px #071b33;
+            box-shadow: 1px 1px 0px #071b331c;
             margin-bottom: 20px;
         }
 
@@ -31,10 +31,12 @@
             width:  100%;
             min-width: 300px;
             height: 100vh;
+            margin-bottom: 0;
         }
         .main-card-body{
             overflow-y: auto;
             overflow-x: hidden;
+            background-color: rgb(248, 248, 248);
         }
 
         .msgTime, .msgHeader{
@@ -66,37 +68,57 @@
             background-color: #3f628e;
         }
 
+        .lineBtn{
+            border: none;
+            background-image: url(img/btn_login_base.png);
+            background-size: cover;
+            height: 33px;
+            width: 113.625px;
+            background-color: transparent;
+            display: none;
+        }
+        .lineBtn:hover{
+            background-image: url(img/btn_login_hover.png);
+        }
+        .lineBtn:active{
+            background-image: url(img/btn_login_press.png);
+        }
+
+        .profileIcon{
+            border-radius: 5px;
+            background-image: url(img/user-image.png);
+            background-repeat: none;
+            background-size: contain;
+        }
+
+        @media screen and (min-width: 600px) {
+            .main-card{
+                margin-top: 5vh;
+                height: 90vh;
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="main-card card m-auto">
-                <div class="card-header text-white">
-                    <h1 class="m-0"><img src="img/logo_white.png" alt="adglobe"></h1>
+            <div class="main-card card">
+                <div class="card-header text-white d-flex justify-content-center align-items-center">
+                    <img class="m-4 mr-auto" src="img/logo_white.png" alt="adglobe">
+                    <button class="lineBtn"></button>
+                    <div class="dropdown dropleft">
+                            <button class="btn btn-secondary dropdown-toggle profileIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                          </div>
                 </div>
                 <div class="card-body main-card-body d-flex">
                     <div class="container displayArea">
-                        <img class="intro mb-4" src="img/intro.jpg">
-                        <!--<div class="row justify-content-end">
-                            <div class="card text-right">
-                                <div class="card-header msgHeader">User</div>
-                                <div class="card-body p-2">
-                                    <p class="card-text msgBody">message A</p>
-                                </div>
-                                <div class="card-footer text-muted bg-white msgTime">01:00</div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-start">
-                            <div class="card" style="max-width: 300px;">
-                                <div class="card-header msgHeader">Bot</div>
-                                <img src="./img/img.jpg" alt="" class="card-img-top instImg">
-                                <div class="card-body p-2">
-                                    <p class="card-text">Instagram Caption</p>
-                                </div>
-                                <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
-                            </div>
-                        </div>-->
+                        <img class="intro mb-4" src="img/intro.png">
                         <div class="row justify-content-start mb-1">
                             <div class="card">
                                 <div class="card-header msgHeader">Bot</div>
@@ -113,6 +135,25 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row justify-content-end">
+                                <div class="card text-right">
+                                    <div class="card-header msgHeader">User</div>
+                                    <div class="card-body p-2">
+                                        <p class="card-text msgBody">message A</p>
+                                    </div>
+                                    <div class="card-footer text-muted bg-white msgTime">01:00</div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start">
+                                <div class="card" style="max-width: 300px;">
+                                    <div class="card-header msgHeader">Bot</div>
+                                    <img src="./img/img.jpg" alt="" class="card-img-top instImg">
+                                    <div class="card-body p-2">
+                                        <p class="card-text">Instagram Caption</p>
+                                    </div>
+                                    <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div class="card-footer">
