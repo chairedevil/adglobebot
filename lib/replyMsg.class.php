@@ -62,11 +62,25 @@
             $access_token_secret = "EoTp7Evg15OCW04zMYshyK8h4FifhB3SXfaYNMfRKlZWy";
 
             $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token, $access_token_secret);
-            $content = $connection->get("account/verify_credentials");
+            if ($connection->getLastHttpCode() == 200) {
+                // Tweet posted succesfully
+                $content = $connection->get("account/verify_credentials");
+                $statuses = $connection->get("statuses/user_timeline", ["screen_name" => "dragalialost", "count" => 1]);
 
-            $statuses = $connection->get("statuses/home_timeline", ["count" => 25, "exclude_replies" => true]);
+                $tweet = array();
+                $tweet['error'] = false;
+                $tweet['screen_name'] = $statuses[0]->user->screen_name;
+                $tweet['name'] = $statuses[0]->user->name;
+                $tweet['text'] = $statuses[0]->text;
+                $tweet['created_at'] = $statuses[0]->created_at;
+                $tweet['media'] = $statuses[0]->entities->media[0]->media_url;
 
-            return $statuses;
+            } else {
+                // Handle error case
+                $tweet['error'] = true;
+            }
+
+            return $tweet;
         }
     }
 
