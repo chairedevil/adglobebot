@@ -27,7 +27,8 @@
         }
     }else if(isset($_POST["lineLogout"])){
         $accToken = "";
-        unset($_SESSION['ses_login_accToken_val']);
+        //unset($_SESSION['ses_login_accToken_val']);
+        session_destroy();
 
         if($LineLogin->revokeToken($accToken)){
             echo "log out successful";
