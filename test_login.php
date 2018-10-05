@@ -62,6 +62,7 @@
     <?php } ?>
 
     <?php
+    /*
     if(isset($_POST["lineLogin"])){
         $LineLogin->authorize(); 
         exit;
@@ -75,6 +76,6 @@
         echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
         $LineLogin->redirect('test_login.php');
         
-    }
+    }*/
     
 
