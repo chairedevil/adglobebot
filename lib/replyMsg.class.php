@@ -65,7 +65,7 @@
             if ($connection->getLastHttpCode() == 200) {
                 // Tweet posted succesfully
                 $content = $connection->get("account/verify_credentials");
-                $statuses = $connection->get("statuses/user_timeline", ["screen_name" => "dragalialost", "count" => 1]);
+                $statuses = $connection->get("statuses/user_timeline", ["screen_name" => $userId, "count" => 1]);
 
                 $tweet = array();
                 $tweet['error'] = false;
