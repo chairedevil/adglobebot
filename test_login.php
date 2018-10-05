@@ -16,6 +16,9 @@
 
     $accToken = $_SESSION['ses_login_accToken_val'];
 
+    echo $accToken."<br><hr>";
+    echo "before verify <br>";
+
     if($LineLogin->verifyToken($accToken)){
         echo $accToken."<br><hr>";
         echo "Token Status OK <br>";  
