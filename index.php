@@ -121,7 +121,7 @@
                     <form action="test_login.php" method="POST">
                         <input type="submit" class="lineBtn" name="lineLogin" value="">
                     </form>
-                    <?php /*echo $_SESSION['ses_login_accToken_val'];*/ }else{ ?>
+                    <?php echo $_SESSION['ses_login_accToken_val']; }else{ ?>
                     <!--already login-->
                     <div class="dropdown dropleft">
                         <button class="btn btn-secondary dropdown-toggle profileIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
