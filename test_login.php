@@ -10,11 +10,12 @@
     $LineLogin = new LineLoginLib(LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_SECRET, LINE_LOGIN_CALLBACK_URL);
     echo "here";
     if(isset($_POST["lineLogin"])){
+        echo "here1";
         if(!isset($_SESSION['ses_login_accToken_val'])){    
             $LineLogin->authorize(); 
             exit;
         }
-    
+        echo "here2";
         $accToken = $_SESSION['ses_login_accToken_val'];
     
         if($accToken){
@@ -32,13 +33,13 @@
                 "userPic" => $lineUserData['picture']
             ];
         }
-        echo "here1";
+        
         echo "<pre>";
         print_r($_SESSION["userData"]);
         echo "</pre>";
 
     }else if(isset($_POST["lineLogout"])){
-        echo "here2";
+        echo "here3";
         $accToken = "";
         unset($_SESSION['ses_login_accToken_val']);
         unset($_SESSION["userInfo"]);
