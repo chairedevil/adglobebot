@@ -141,7 +141,50 @@
                     return $result;         
                 }                           
             }
-        }   
+        }
+        
+        public function userProfile($accessToken, $returnResult = NULL, $ssl = NULL)
+        {
+            $_SSL_VERIFYHOST = (isset($ssl))?2:0;
+            $_SSL_VERIFYPEER = (isset($ssl))?1:0;
+            $accToken = $accessToken;
+            $profileURL = "https://api.line.me/v2/profile";
+            
+            $headers = array(
+                'Authorization: Bearer '.$accToken
+            );
+            
+            $ch = curl_init();
+            curl_setopt( $ch, CURLOPT_URL, $profileURL);
+            curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, $_SSL_VERIFYHOST);
+            curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, $_SSL_VERIFYPEER);
+            curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+            $result = curl_exec( $ch );
+            $httpCode = curl_getinfo( $ch, CURLINFO_HTTP_CODE);
+            curl_close( $ch );
+    
+            $result = json_decode($result,TRUE);
+    
+            if($httpCode == 200){
+                if(!is_null($result) && array_key_exists('userId',$result)){
+                    if(is_null($returnResult)){
+                        return $result['userId'];
+                    }else{
+                        return $result;     
+                    }
+                }else{
+                    return NULL;    
+                }                   
+            }else{
+                if(is_null($returnResult)){
+                    return NULL;
+                }else{
+                    return $result;         
+                }                       
+            }
+        }
 
         public function randomToken($length = 32)
         {
