@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,6 +96,10 @@
             width: 50px;
         }
 
+        #logout:hover{
+            cursor: pointer;
+        }
+
         @media screen and (min-width: 600px) {
             .main-card{
                 margin-top: 5vh;
@@ -108,8 +116,12 @@
                 <div class="card-header text-white d-flex justify-content-center align-items-center">
                     <img class="m-4 mr-auto" src="img/logo_white.png" alt="adglobe">
                     <!--not login-->
-                    <button class="lineBtn"></button>
-
+                    <?php if(!isset($_SESSION['ses_login_accToken_val'])){ ?>
+                    <!--<a href="test_login.php"><button class="lineBtn"></button></a>-->
+                    <form action="test_login.php" method="POST">
+                        <input type="submit" class="lineBtn" name="lineLogin" value="">
+                    </form>
+                    <?php /*echo $_SESSION['ses_login_accToken_val'];*/ }else{ ?>
                     <!--already login-->
                     <div class="dropdown dropleft">
                         <button class="btn btn-secondary dropdown-toggle profileIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -117,8 +129,14 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Logout</a>
+                            <p class="dropdown-item" id="logout" onclick="logoutClick()">Logout2</p>
+                                <form action="test_login.php">
+                                    <input type="submit" name="lineLogout" id="lineLogout" style="display:none;">
+                                </form>
                         </div>
                     </div>
+                    <?php } ?>
+
 
                 </div>
                 <div class="card-body main-card-body d-flex">
@@ -179,6 +197,10 @@
         function scroll(){
             $('.main-card-body').scrollTop($('.main-card-body')[0].scrollHeight);
         };
+
+        function logoutClick(){
+            $("#lineLogout").click();
+        }
 
         function getTime(){
             $date = new Date();

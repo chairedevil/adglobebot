@@ -27,13 +27,13 @@
 
     if($accToken){
     ?>
-    <form method="post">
+    <!--<form method="post">
     <button type="submit" name="lineLogout">LINE Logout</button>
     </form>
     <?php }else{ ?>
     <form method="post">
     <button type="submit" name="lineLogin">LINE Login</button>
-    </form>   
+    </form>   -->
     <?php } ?>
 
     <?php
@@ -51,4 +51,6 @@
         $LineLogin->redirect('test_login.php');
         
     }
+    header("Location: index.php");
+    exit;
 
