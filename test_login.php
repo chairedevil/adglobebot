@@ -16,7 +16,10 @@
 
     $accToken = $_SESSION['ses_login_accToken_val'];
 
-    //echo $accToken."<br><hr>";
+    if($accToken){
+        echo $accToken."<br><hr>";
+    }
+    
 
     /*if($LineLogin->verifyToken($accToken)){
         echo $accToken."<br><hr>";
@@ -47,8 +50,9 @@
         unset($_SESSION['ses_login_accToken_val']);
 
         if($LineLogin->revokeToken($accToken)){
-            echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
+            echo "log out successful";
         }
+        echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
         $LineLogin->redirect('test_login.php');
         
     }
