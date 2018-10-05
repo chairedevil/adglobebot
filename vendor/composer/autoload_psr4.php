@@ -23,6 +23,7 @@ return array(
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
     'Mpociot\\Pipeline\\' => array($vendorDir . '/mpociot/pipeline/src'),
+    'LINE\\' => array($vendorDir . '/linecorp/line-bot-sdk/src'),
     'Instagram\\' => array($vendorDir . '/pgrimaud/instagram-user-feed/src/Instagram'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),

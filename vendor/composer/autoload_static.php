@@ -56,6 +56,10 @@ class ComposerStaticInita15e902f91a5de2896484d4e6e6d63ef
         array (
             'Mpociot\\Pipeline\\' => 17,
         ),
+        'L' => 
+        array (
+            'LINE\\' => 5,
+        ),
         'I' => 
         array (
             'Instagram\\' => 10,
@@ -149,6 +153,10 @@ class ComposerStaticInita15e902f91a5de2896484d4e6e6d63ef
         'Mpociot\\Pipeline\\' => 
         array (
             0 => __DIR__ . '/..' . '/mpociot/pipeline/src',
+        ),
+        'LINE\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/linecorp/line-bot-sdk/src',
         ),
         'Instagram\\' => 
         array (
