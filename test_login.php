@@ -25,7 +25,13 @@
         if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
             print_r($userInfo);
         }
-        $_SESSION["userInfo"] = $userInfo;
+        if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
+            $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
+            $_SESSION["userData"] = [
+                "userName" => $lineUserData['name'],
+                "userPic" => $lineUserData['picture']
+            ];
+        }
 
     }else if(isset($_POST["lineLogout"])){
         $accToken = "";

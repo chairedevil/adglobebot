@@ -7,17 +7,11 @@
     if(isset($_SESSION["ses_login_accToken_val"])){
         $accToken = $_SESSION["ses_login_accToken_val"];
 
-        $userInfo = [];
+        $userData = [];
         if(isset($_SESSION["userInfo"])){
-            $userInfo = $_SESSION["userInfo"];
+            $userData = $_SESSION["userData"];
         }
-        echo $userInfo;
-        //$userInfo = $LineLogin->userProfile($accToken,true);
-        /*if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
-            echo "<pre>";
-            print_r($userInfo);
-            echo "</pre>";
-        }*/
+        print_r($userData);
     }
 
 ?>
