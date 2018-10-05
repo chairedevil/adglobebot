@@ -48,7 +48,7 @@ $botman->hears('t@{userId}', function ($bot, $userId) {
 
     $tweetData = $rm->getLastTweet($userId);
     
-    if($tweetData['error']){
+    if(!$tweetData['error']){
 
         $bot->reply('tweet', [
             'type' => 'twitter',
