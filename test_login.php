@@ -19,12 +19,6 @@
     if($accToken){
         echo $accToken."<br><hr>";
     }
-    
-
-    /*if($LineLogin->verifyToken($accToken)){
-        echo $accToken."<br><hr>";
-        echo "Token Status OK <br>";  
-    }*/
 
     $userInfo = $LineLogin->userProfile($accToken,true);
     if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
