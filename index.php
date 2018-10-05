@@ -5,6 +5,12 @@
     if(isset($_SESSION["ses_login_accToken_val"])){
         $accToken = $_SESSION["ses_login_accToken_val"];
     }
+
+    $userInfo = [];
+    if(isset($_SESSION["userInfo"])){
+        $userInfo = $_SESSION["userInfo"];
+    }
+    echo $userInfo;
 ?>
 
 <!DOCTYPE html>
@@ -140,7 +146,7 @@
                                 </form>
                         </div>
                     </div>
-                    <?php echo $accToken; } ?>
+                    <?php } ?>
 
 
                 </div>
