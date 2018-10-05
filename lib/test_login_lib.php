@@ -186,6 +186,45 @@
             }
         }
 
+        public function revokeToken($accessToken, $returnResult = NULL, $ssl = NULL)
+        {
+            $_SSL_VERIFYHOST = (isset($ssl))?2:0;
+            $_SSL_VERIFYPEER = (isset($ssl))?1:0;
+            $accToken = $accessToken;
+            $revokeURL = "https://api.line.me/oauth2/v2.1/revoke";
+            
+            $headers = array(
+                'Content-Type: application/x-www-form-urlencoded'
+            );
+            
+            $data = array(
+                'access_token' => $accToken,
+                'client_id' => $this->_CLIENT_ID,
+                'client_secret' => $this->_CLIENT_SECRET              
+            );      
+    
+            $ch = curl_init();
+            curl_setopt( $ch, CURLOPT_URL, $revokeURL);
+            curl_setopt( $ch, CURLOPT_POST, 1);
+            curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query($data));
+            curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, $_SSL_VERIFYHOST);
+            curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, $_SSL_VERIFYPEER);
+            curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+            $result = curl_exec( $ch );
+            $httpCode = curl_getinfo( $ch, CURLINFO_HTTP_CODE);
+            curl_close( $ch );
+    
+            $result = json_decode($result,TRUE);
+    
+            if($httpCode == 200){
+                return true;                
+            }else{
+                return NULL;                        
+            }
+        }
+
         public function randomToken($length = 32)
         {
             if(!isset($length) || intval($length) <= 8 ){
