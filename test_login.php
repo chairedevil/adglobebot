@@ -38,6 +38,7 @@
         echo "</pre>";
 
     }else if(isset($_POST["lineLogout"])){
+        echo "here2";
         $accToken = "";
         unset($_SESSION['ses_login_accToken_val']);
         unset($_SESSION["userInfo"]);
