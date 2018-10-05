@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    $userInfor = "";
+    $userInfo = "";
     if(isset($_SESSION["userInfo"])){
         $userInfo = $_SESSION["userInfo"];
     }
