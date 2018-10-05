@@ -76,9 +76,8 @@ $botman->hears('皆に：{text}', function ($bot, $text) {
     foreach($users as $user){
         $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
         $response = $bot->pushMessage($user, $textMessageBuilder);
+        //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
     }
-
-    //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 });
 
