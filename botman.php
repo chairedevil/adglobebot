@@ -60,9 +60,11 @@ $botman->hears('t@{userId}', function ($bot, $userId) {
         ]);
 
     }else{
+        $errMsg = new replyMsg();
+        $errMsg = $errMsg->translate($tweetData['errMsg']);
         $bot->reply('tweet', [
             'type' => 'twitter',
-            'errMsg' => $tweetData['errMsg']
+            'errMsg' => $errMsg
         ]);
     }
 
