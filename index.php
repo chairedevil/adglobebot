@@ -41,6 +41,9 @@
             object-fit: contain;
         }
 
+        tr{
+            padding: 10px;
+        }
         .card{
             border: none;
             box-shadow: 1px 1px 0px #071b331c;
@@ -173,7 +176,7 @@
                                     <table>
                                         <tr>
                                             <td>翻訳</td>
-                                            <td># + 文章又は言葉</td>
+                                            <td>"#" + 文章又は言葉</td>
                                         </tr>
                                         <tr>
                                             <td>インスタグラムの直近投稿</td>
@@ -181,7 +184,7 @@
                                         </tr>
                                         <tr>
                                             <td>ツイッターの直近投稿</td>
-                                            <td>ツイッターのユーザー名</td>
+                                            <td>"t@" + ツイッターのユーザー名</td>
                                         </tr>
                                         <tr>
                                             <td>ブロードキャスト</td>
