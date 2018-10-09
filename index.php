@@ -200,8 +200,8 @@
                                 <div class="card-header msgHeader">Bot</div>
                                 <img src="./img/img.jpg" alt="" class="card-img-top instImg">
                                 <div class="card-body p-2">
-                                    <h5 class="card-title">Tweet title</h5>
                                     <p class="card-text">Tweet Caption</p>
+                                    <p class="card-text text-right text-muted font-italic">Twitter Account</p>
                                 </div>
                                 <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
                             </div>
