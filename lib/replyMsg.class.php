@@ -77,7 +77,7 @@
                     if(isset($statuses->errors[0]->message)){
                         $tweet['errMsg'] = $statuses->errors[0]->message;
                     }else{
-                        $tweet['errMsg'] = "Unkonwn Error";
+                        $tweet['errMsg'] = "申し訳ございません、そのページは存在しません。";
                     }
                     
                 }else{
