@@ -20,7 +20,9 @@ try {
     $img['caption'] = $feed->getMedias()[0]->getCaption();
 
 } catch (Exception $exception) {
-    print_r($exception->getMessage());
+    //print_r($exception->getMessage());
+    echo "c1";
 } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-    print_r($exception->getMessage());
+    //print_r($exception->getMessage());
+    echo "c2";
 }
