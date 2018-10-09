@@ -81,6 +81,9 @@
             border-radius: 0;
         }
         
+        .twitter_account{
+            font-size: 0.8em;
+        }
         .sendBtn{
             background-color: #244063;
             color: #fff;
@@ -201,7 +204,7 @@
                                 <img src="./img/img.jpg" alt="" class="card-img-top instImg">
                                 <div class="card-body p-2">
                                     <p class="card-text">Tweet Caption</p>
-                                    <p class="card-text text-right text-muted font-italic">Twitter Account</p>
+                                    <p class="card-text text-right text-muted font-italic twitter_account">Twitter Account</p>
                                 </div>
                                 <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
                             </div>
@@ -318,7 +321,18 @@
                             $botText = $botText+'</div>';
                             
                         }else if($indicator == 'twitter'){
-
+                            
+                            /*<div class="row justify-content-start">
+                            <div class="card" style="max-width: 300px;">
+                                <div class="card-header msgHeader">Bot</div>
+                                <img src="./img/img.jpg" alt="" class="card-img-top instImg">
+                                <div class="card-body p-2">
+                                    <p class="card-text">Tweet Caption</p>
+                                    <p class="card-text text-right text-muted font-italic twitter_account">-Twitter Account-</p>
+                                </div>
+                                <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
+                            </div>
+                            </div>*/
                         }else if($indicator == 'error'){
                             $botText = '<div class="row justify-content-start mb-1">';
                             $botText = $botText+'<div class="card" style="max-width: 300px">';
