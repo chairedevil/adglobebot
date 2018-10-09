@@ -236,7 +236,7 @@
 
         function getTime(){
             $date = new Date();
-            if($date.getMinutes()>10){
+            if($date.getMinutes()<10){
                 $minute = "0"+$date.getMinutes();
             }else{
                 $minute = $date.getMinutes();
