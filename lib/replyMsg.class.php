@@ -72,7 +72,7 @@
 
                 $tweet = array();
 
-                if(isset($statuses->errors[0]->message)){
+                if(isset($statuses->errors[0]->message) || $userId==null){
                     $tweet['error'] = true;
                     $tweet['errMsg'] = $statuses->errors[0]->message;
                 }else{
