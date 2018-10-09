@@ -317,7 +317,7 @@
                             $botText = $botText+'</div>';
                             $botText = $botText+'</div>';
                             
-                        else if($indicator == 'twitter'){
+                        }else if($indicator == 'twitter'){
 
                         }else if($indicator == 'error'){
                             $botText = '<div class="row justify-content-start mb-1">';
