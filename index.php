@@ -263,7 +263,7 @@
                 
                 let item = {
                     driver: 'web',
-                    userId: '.<?= $userId ?>.',
+                    userId: '<?= $userId ?>',
                     message : text
                 };
 
