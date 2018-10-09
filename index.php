@@ -4,12 +4,14 @@
     require_once("lib/test_login_lib.php");
 
     $accToken = "";
+    $username = "guest";
     if(isset($_SESSION["ses_login_accToken_val"])){
         $accToken = $_SESSION["ses_login_accToken_val"];
 
         $userInfo = [];
         if(isset($_SESSION["userInfo"])){
             $userInfo = $_SESSION["userInfo"];
+            $username = $userInfo["displayName"];
         }
         echo"<pre>";
         print_r($userInfo);
@@ -174,7 +176,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-end">
+                        <!--<div class="row justify-content-end">
                             <div class="card text-right">
                                 <div class="card-header msgHeader">User</div>
                                 <div class="card-body p-2">
@@ -192,7 +194,7 @@
                                 </div>
                                 <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="card-footer">
@@ -260,9 +262,7 @@
                         $sendTime = getTime();
                         $userText = '<div class="row justify-content-end mb-1">';
                         $userText = $userText+'<div class="card text-right">';
-
-                        //let username = ($accToken=="")?'guest':;
-                        $userText = $userText+'<div class="card-header msgHeader"><?= $userInfo["displayName"] ?></div>';
+                        $userText = $userText+'<div class="card-header msgHeader"><?= $username ?></div>';
                         $userText = $userText+'<div class="card-body p-2">';
                         $userText = $userText+'<p class="card-text msgBody">'+ text +'</p>';
                         $userText = $userText+'</div>';
