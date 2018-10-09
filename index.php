@@ -169,10 +169,30 @@
                             <div class="card">
                                 <div class="card-header msgHeader">Bot</div>
                                 <div class="card-body p-2">
-                                    <p class="card-text msgBody">翻訳　→　# + 文章又は言葉</p><br>
+                                <p class="card-text msgBody">
+                                    <table>
+                                        <tr>
+                                            <td>翻訳</td>
+                                            <td># + 文章又は言葉</td>
+                                        </tr>
+                                        <tr>
+                                            <td>インスタグラムの直近投稿</td>
+                                            <td>"i@" + インスタグラムのユーザー名</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ツイッターの直近投稿</td>
+                                            <td>ツイッターのユーザー名</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ブロードキャスト</td>
+                                            <td>"皆に：" + メッセージ</td>
+                                        </tr>
+                                    </table>
+                                </p>
+                                    <!--<p class="card-text msgBody">翻訳　→　# + 文章又は言葉</p><br>
                                     <p class="card-text msgBody">インスタグラムの直近投稿　→　"i@" + インスタグラムのユーザー名</p><br>
-                                    <p class="card-text msgBody">ツイッターの直近投稿　→　"t@" + インスタグラムのユーザー名</p><br>
-                                    <p class="card-text msgBody">ブロードキャスト　→　"皆に：" + インスタグラムのユーザー名</p><br>
+                                    <p class="card-text msgBody">ツイッターの直近投稿　→　"t@" + ツイッターのユーザー名</p><br>
+                                    <p class="card-text msgBody">ブロードキャスト　→　"皆に：" + メッセージ</p><br>-->
                                 </div>
                             </div>
                         </div>
