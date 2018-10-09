@@ -236,7 +236,12 @@
 
         function getTime(){
             $date = new Date();
-            $time = $date.getHours()+':'+$date.getMinutes();
+            if($date.getMinutes().length==1){
+                $minute = "0"+$date.getMinutes();
+            }else{
+                $minute = $date.getMinutes();
+            }
+            $time = $date.getHours()+':'+$minute;
             return $time;
         }
 
