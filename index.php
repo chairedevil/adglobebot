@@ -335,17 +335,14 @@
                                 $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
                                 $botText = $botText+'</div>';
                             }else{
-                                $botText = '<div class="row justify-content-start">';
-                                $botText = $botText+'<div class="card" style="max-width: 300px;">';
+                                $botText = '<div class="row justify-content-start mb-1">';
+                                $botText = $botText+'<div class="card" style="max-width: 300px">';
                                 $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
-                                if(result.messages[0].additionalParameters.media!=null){
-                                    $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.media +'" alt="" class="card-img-top instImg">';
-                                }
                                 $botText = $botText+'<div class="card-body p-2">';
-                                $botText = $botText+'<p class="card-text">'+ result.messages[0].additionalParameters.text +'</p>';
-                                $botText = $botText+'<p class="card-text text-right text-muted font-italic twitter_account">-'+ result.messages[0].additionalParameters.name +'-</p>';
+                                $botText = $botText+'<p class="card-text msgBody">'+　result.messages[0].additionalParameters.errMsg　+'</p>';
                                 $botText = $botText+'</div>';
                                 $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                                $botText = $botText+'</div>';
                                 $botText = $botText+'</div>';
                             }
                             
