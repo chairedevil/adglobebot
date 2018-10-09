@@ -175,24 +175,24 @@
                             </div>
                         </div>
                         <div class="row justify-content-end">
-                                <div class="card text-right">
-                                    <div class="card-header msgHeader">User</div>
-                                    <div class="card-body p-2">
-                                        <p class="card-text msgBody">message A</p>
-                                    </div>
-                                    <div class="card-footer text-muted bg-white msgTime">01:00</div>
+                            <div class="card text-right">
+                                <div class="card-header msgHeader">User</div>
+                                <div class="card-body p-2">
+                                    <p class="card-text msgBody">message A</p>
                                 </div>
+                                <div class="card-footer text-muted bg-white msgTime">01:00</div>
                             </div>
-                            <div class="row justify-content-start">
-                                <div class="card" style="max-width: 300px;">
-                                    <div class="card-header msgHeader">Bot</div>
-                                    <img src="./img/img.jpg" alt="" class="card-img-top instImg">
-                                    <div class="card-body p-2">
-                                        <p class="card-text">Instagram Caption</p>
-                                    </div>
-                                    <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
+                        </div>
+                        <div class="row justify-content-start">
+                            <div class="card" style="max-width: 300px;">
+                                <div class="card-header msgHeader">Bot</div>
+                                <img src="./img/img.jpg" alt="" class="card-img-top instImg">
+                                <div class="card-body p-2">
+                                    <p class="card-text">Instagram Caption</p>
                                 </div>
+                                <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
                             </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -260,7 +260,9 @@
                         $sendTime = getTime();
                         $userText = '<div class="row justify-content-end mb-1">';
                         $userText = $userText+'<div class="card text-right">';
-                        $userText = $userText+'<div class="card-header msgHeader"><?= $userInfo["displayName"] ?></div>';
+
+                        let username = ($accToken=="")?'guest':<?= $userInfo["displayName"] ?>;
+                        $userText = $userText+'<div class="card-header msgHeader">'+ username +'</div>';
                         $userText = $userText+'<div class="card-body p-2">';
                         $userText = $userText+'<p class="card-text msgBody">'+ text +'</p>';
                         $userText = $userText+'</div>';
