@@ -97,7 +97,7 @@
                 }                           
             }
         }
-
+/*
         public function verifyToken($accessToken, $returnResult = NULL, $ssl = NULL)
         {
             $_SSL_VERIFYHOST = (isset($ssl))?2:0;
@@ -142,7 +142,7 @@
                 }                           
             }
         }
-        
+     */   
         public function userProfile($accessToken, $returnResult = NULL, $ssl = NULL)
         {
             $_SSL_VERIFYHOST = (isset($ssl))?2:0;
