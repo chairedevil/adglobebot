@@ -38,15 +38,18 @@
             try {
                 $feed = $api->getFeed();
                 $img = array();
+                $img['error'] = false;
                 $img['username'] = $feed->getUserName();
                 $img['thumSrc'] = $feed->getMedias()[0]->getThumbnailSrc();
                 $img['imgSrc'] = $feed->getMedias()[0]->getDisplaySrc();
                 $img['caption'] = $feed->getMedias()[0]->getCaption();
 
             } catch (Exception $exception) {
-                print_r($exception->getMessage());
+                $img['error'] = true;
+
+                //print_r($exception->getMessage());
             } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-                print_r($exception->getMessage());
+                //print_r($exception->getMessage());
             }
 
 

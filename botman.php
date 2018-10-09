@@ -34,11 +34,20 @@ $botman->hears('i@{userId}', function ($bot, $userId) {
 
     $instaData = $rm->getLastInsta($userId);
     
+    if(!$instaData['error']){
         $bot->reply('inst', [
             'type' => 'instagram',
             'imgSrc' => $instaData['imgSrc'],
-            'caption' => $instaData['caption']
+            'caption' => $instaData['caption'],
+            'error' => false
         ]);
+    }else{
+        $bot->reply('inst', [
+            'type' => 'instagram',
+            'error' => true,
+            'errMsg' => '申し訳ございません、そのページは存在しません。'
+        ]);
+    }
     
 });
 
@@ -56,7 +65,8 @@ $botman->hears('t@{userId}', function ($bot, $userId) {
             'name' => $tweetData['name'],
             'text' => $tweetData['text'],
             'created_at' => $tweetData['created_at'],
-            'media' => $tweetData['media']
+            'media' => $tweetData['media'],
+            'error' => false
         ]);
 
     }else{
@@ -64,7 +74,8 @@ $botman->hears('t@{userId}', function ($bot, $userId) {
         $errMsg = $errMsg->translate($tweetData['errMsg']);
         $bot->reply('tweet', [
             'type' => 'twitter',
-            'errMsg' => $errMsg
+            'errMsg' => $errMsg,
+            'error' => true
         ]);
     }
 
