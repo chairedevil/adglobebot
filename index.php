@@ -41,8 +41,8 @@
             object-fit: contain;
         }
 
-        tr{
-            padding: 20px;
+        td{
+            padding: 20px 10px;
         }
         .card{
             border: none;
