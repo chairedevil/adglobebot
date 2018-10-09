@@ -321,7 +321,7 @@
                             $botText = $botText+'</div>';
                             
                         }else if($indicator == 'twitter'){
-                            if(!isset(result.messages[0].additionalParameters.errMsg)){
+                            if(result.messages[0].additionalParameters.errMsg){
                                 $botText = '<div class="row justify-content-start">';
                                 $botText = $botText+'<div class="card" style="max-width: 300px;">';
                                 $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
