@@ -261,8 +261,8 @@
                         $userText = '<div class="row justify-content-end mb-1">';
                         $userText = $userText+'<div class="card text-right">';
 
-                        let username = ($accToken=="")?'guest':<?= $userInfo["displayName"] ?>;
-                        $userText = $userText+'<div class="card-header msgHeader">'+ username +'</div>';
+                        //let username = ($accToken=="")?'guest':;
+                        $userText = $userText+'<div class="card-header msgHeader"><?= $userInfo["displayName"] ?></div>';
                         $userText = $userText+'<div class="card-body p-2">';
                         $userText = $userText+'<p class="card-text msgBody">'+ text +'</p>';
                         $userText = $userText+'</div>';
