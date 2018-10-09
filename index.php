@@ -29,8 +29,7 @@
     <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
     <style>
         body{
-            /*background-color: #05172e;*/
-            background-color: grey;
+            background-color: #05172e;
             font-family: "Rounded Mplus 1c";
         }
         .intro{

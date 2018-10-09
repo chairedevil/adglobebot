@@ -32,20 +32,7 @@
         echo "<pre>";
         print_r($_SESSION["userInfo"]);
         echo "</pre>";
-/*
-        if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
-            $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
-            $_SESSION["userData"] = [
-                "userName" => $lineUserData['name'],
-                "userPic" => $lineUserData['picture']
-            ];
-        }
-        echo "<br>userData: ";
-        echo "lineUserData: ".$lineUserData."<br>";
-        echo "<pre>";
-        print_r($_SESSION["userData"]);
-        echo "</pre>";
-*/
+
     if(isset($_POST["lineLogout"])){
         echo "here3";
         $accToken = "";
@@ -59,33 +46,4 @@
     
     header("Location: index.php");
     exit;
-
-    if($accToken){
-    ?>
-    <!--<form method="post">
-    <button type="submit" name="lineLogout">LINE Logout</button>
-    </form>
-    <?php }else{ ?>
-    <form method="post">
-    <button type="submit" name="lineLogin">LINE Login</button>
-    </form>   -->
-    <?php } ?>
-
-    <?php
-    /*
-    if(isset($_POST["lineLogin"])){
-        $LineLogin->authorize(); 
-        exit;
-    }else if(isset($_POST["lineLogout"])){
-        $accToken = "";
-        unset($_SESSION['ses_login_accToken_val']);
-
-        if($LineLogin->revokeToken($accToken)){
-            echo "log out successful";
-        }
-        echo '<form method="post"><button type="submit" name="lineLogin">LINE Login</button></form>';
-        $LineLogin->redirect('test_login.php');
-        
-    }*/
     
-
