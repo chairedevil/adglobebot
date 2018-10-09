@@ -74,7 +74,12 @@
 
                 if(isset($statuses->errors[0]->message) || $userId==null){
                     $tweet['error'] = true;
-                    $tweet['errMsg'] = $statuses->errors[0]->message;
+                    if(isset($statuses->errors[0]->message)){
+                        $tweet['errMsg'] = $statuses->errors[0]->message;
+                    }else{
+                        $tweet['errMsg'] = "Unkonwn Error";
+                    }
+                    
                 }else{
                     $tweet['error'] = false;
                     $tweet['screen_name'] = $statuses[0]->user->screen_name;
