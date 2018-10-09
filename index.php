@@ -321,7 +321,18 @@
                             $botText = $botText+'</div>';
                             
                         }else if($indicator == 'twitter'){
-                            
+                            $botText = '<div class="row justify-content-start">';
+                            $botText = $botText+'<div class="card" style="max-width: 300px;">';
+                            $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
+                            if(result.message[0].additionalParameters.media!=null){
+                                $botText = $botText+'<img src="'+ result.message[0].additionalParameters.media +'" alt="" class="card-img-top instImg">';
+                            }
+                            $botText = $botText+'<div class="card-body p-2">';
+                            $botText = $botText+'<p class="card-text">'+ result.message[0].additionalParameters.text +'</p>';
+                            $botText = $botText+'<p class="card-text text-right text-muted font-italic twitter_account">-'+ result.message[0].additionalParameters.name +'-</p>';
+                            $botText = $botText+'</div>';
+                            $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
+                            $botText = $botText+'</div>';
                             /*<div class="row justify-content-start">
                             <div class="card" style="max-width: 300px;">
                                 <div class="card-header msgHeader">Bot</div>
