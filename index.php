@@ -42,7 +42,7 @@
         }
 
         tr{
-            padding: 10px;
+            padding: 20px;
         }
         .card{
             border: none;
