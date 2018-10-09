@@ -5,6 +5,7 @@
 
     $accToken = "";
     $username = "guest";
+    $userId = "adglobe";
     if(isset($_SESSION["ses_login_accToken_val"])){
         $accToken = $_SESSION["ses_login_accToken_val"];
 
@@ -12,10 +13,11 @@
         if(isset($_SESSION["userInfo"])){
             $userInfo = $_SESSION["userInfo"];
             $username = $userInfo["displayName"];
+            $userId = $userInfo['userId'];
         }
-        echo"<pre>";
+        /*echo"<pre>";
         print_r($userInfo);
-        echo"</pre>";
+        echo"</pre>";*/
     }
 
 ?>
@@ -261,7 +263,7 @@
                 
                 let item = {
                     driver: 'web',
-                    userId: 'adglobe',
+                    userId: <?= $userId ?>,
                     message : text
                 };
 
