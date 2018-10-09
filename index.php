@@ -169,11 +169,14 @@
                             <div class="card">
                                 <div class="card-header msgHeader">Bot</div>
                                 <div class="card-body p-2">
-                                    <p class="card-text msgBody"># + 文章又は言葉　→　翻訳</p>
+                                    <p class="card-text msgBody">翻訳　→　# + 文章又は言葉</p><br>
+                                    <p class="card-text msgBody">インスタグラムの直近投稿　→　"i@" + インスタグラムのユーザー名</p><br>
+                                    <p class="card-text msgBody">ツイッターの直近投稿　→　"t@" + インスタグラムのユーザー名</p><br>
+                                    <p class="card-text msgBody">ブロードキャスト　→　"皆に：" + インスタグラムのユーザー名</p><br>
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-start mb-1">
+                        <!--<div class="row justify-content-start mb-1">
                             <div class="card">
                                 <div class="card-header msgHeader">Bot</div>
                                 <div class="card-body p-2">
@@ -181,7 +184,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--<div class="row justify-content-end">
+                        <div class="row justify-content-end">
                             <div class="card text-right">
                                 <div class="card-header msgHeader">User</div>
                                 <div class="card-body p-2">
