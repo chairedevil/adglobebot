@@ -195,6 +195,17 @@
                                 <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
                             </div>
                         </div>-->
+                        <div class="row justify-content-start">
+                            <div class="card" style="max-width: 300px;">
+                                <div class="card-header msgHeader">Bot</div>
+                                <img src="./img/img.jpg" alt="" class="card-img-top instImg">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title">Tweet title</h5>
+                                    <p class="card-text">Tweet Caption</p>
+                                </div>
+                                <div class="card-footer text-muted text-right bg-white msgTime">01:00</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -269,7 +280,7 @@
                         $userText = $userText+'<div class="card-footer text-muted bg-white msgTime">'+ $sendTime +'</div>';
                         $userText = $userText+'</div>';
                         $userText = $userText+'</div>';
-                        
+
                         $('.displayArea').append($userText);
                         $("#input").val("");
                         scroll();
@@ -306,6 +317,8 @@
                             $botText = $botText+'</div>';
                             $botText = $botText+'</div>';
                             
+                        else if($indicator == 'twitter'){
+
                         }else if($indicator == 'error'){
                             $botText = '<div class="row justify-content-start mb-1">';
                             $botText = $botText+'<div class="card" style="max-width: 300px">';
