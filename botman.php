@@ -59,6 +59,11 @@ $botman->hears('t@{userId}', function ($bot, $userId) {
             'media' => $tweetData['media']
         ]);
 
+    }else{
+        $bot->reply('tweet', [
+            'type' => 'twitter',
+            'errMsg' => $tweetData['errMsg']
+        ]);
     }
 
 });
