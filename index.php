@@ -269,7 +269,7 @@
                         $userText = $userText+'<div class="card-footer text-muted bg-white msgTime">'+ $sendTime +'</div>';
                         $userText = $userText+'</div>';
                         $userText = $userText+'</div>';
-                        console.log(username);
+                        
                         $('.displayArea').append($userText);
                         $("#input").val("");
                         scroll();
