@@ -419,7 +419,10 @@
                         if(loadIndicator){
                             let imgId = document.querySelector("#imgId"+count);
                             console.log("#imgId"+count);
-                            imgId.onload = scroll();
+                            imgId.onload = function(){
+                                console.log("loaded");
+                                scroll();
+                            }
                             count++;
                         }
                     }, error: function(){
