@@ -10,9 +10,9 @@ try {
     $feed = $api->getFeed();
     $img = array();
 
-    echo "<pre>";
-    print_r($feed);
-    echo "</pre>";
+    //echo "<pre>";
+    //print_r($feed);
+    //echo "</pre>";
 
     echo $img['userName'] = $feed->getUserName();
     echo $img['fullName'] = $feed->fullName();
