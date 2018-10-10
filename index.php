@@ -387,6 +387,14 @@
                                 $botText = $botText+'</div>';
                                 $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
                                 $botText = $botText+'</div>';
+                                let testDate = result.messages[0].additionalParameters.created_at;
+                                let dateArray = testDate.split(" ");
+                                console.log(dateArray[0]);
+                                console.log(dateArray[1]);
+                                console.log(dateArray[2]);
+                                console.log(dateArray[3]);
+                                console.log(dateArray[4]);
+                                console.log(dateArray[5]);
                             }else{
                                 $botText = '<div class="row justify-content-start mb-1">';
                                 $botText = $botText+'<div class="card" style="max-width: 300px">';
