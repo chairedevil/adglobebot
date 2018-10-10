@@ -382,13 +382,15 @@
                                     loadIndicator = true;
                                 }
                                 $botText = $botText+'<div class="card-body p-2">';
+                                let testDate = result.messages[0].additionalParameters.created_at;
+                                let dateArray = testDate.split(" ");
                                 $botText = $botText+'<p class="card-text">'+ result.messages[0].additionalParameters.text +'</p>';
+                                $botText = $botText+'<p class="card-text">'+ dateArray[0] +' '+ dateArray[1] +' '+ dateArray[2] +' '+ dateArray[3] +' '+ dateArray[5] +'</p>';
                                 $botText = $botText+'<p class="card-text text-right text-muted font-italic twitter_account">-'+ result.messages[0].additionalParameters.name +'-</p>';
                                 $botText = $botText+'</div>';
                                 $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
                                 $botText = $botText+'</div>';
-                                let testDate = result.messages[0].additionalParameters.created_at;
-                                let dateArray = testDate.split(" ");
+                                
                                 console.log(dateArray[0]);
                                 console.log(dateArray[1]);
                                 console.log(dateArray[2]);
