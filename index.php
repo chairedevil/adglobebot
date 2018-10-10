@@ -50,6 +50,10 @@
             margin-bottom: 20px;
         }
 
+        .top_header{
+            height: 100px;
+        }
+
         .card-header{
             background-color: #244063;
         }
@@ -140,7 +144,7 @@
     <div class="container">
         <div class="row">
             <div class="main-card card">
-                <div class="card-header text-white d-flex justify-content-center align-items-center">
+                <div class="card-header text-white d-flex justify-content-center align-items-center top_header">
                     <img class="m-4 mr-auto" src="img/logo_white.png" alt="adglobe">
                     <!--not login-->
                     <?php if($accToken==""){ ?>
