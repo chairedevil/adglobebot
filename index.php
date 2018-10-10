@@ -359,9 +359,8 @@
 
                                 let postDate = result.messages[0].additionalParameters.date;
                                 let dateArray = postDate.date.split(".");
-                                console.log(dateArray[0]);
                                 
-                                $botText = $botText+'<p class="card-text text-right text-muted font-italic twitter_account">'+ postDate.date +'<br>-'+ result.messages[0].additionalParameters.fullName +'-</p>';
+                                $botText = $botText+'<p class="card-text text-right text-muted font-italic twitter_account">'+ dateArray[0] +'<br>-'+ result.messages[0].additionalParameters.fullName +'-</p>';
                                 $botText = $botText+'</div>';
                                 $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
                                 $botText = $botText+'</div>';
