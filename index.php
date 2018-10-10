@@ -418,7 +418,9 @@
                         console.log(loadIndicator);
                         if(loadIndicator){
                             let imgId = $("#imgId"+count);
+                            console.log("#imgId"+count);
                             if(imgId.complete){
+                                console.log("loaded");
                                 scroll();
                             }
                             count++;
