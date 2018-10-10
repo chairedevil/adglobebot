@@ -140,7 +140,7 @@
 
     </style>
 </head>
-<body>
+<body onload="scroll()">
     <div class="container">
         <div class="row">
             <div class="main-card card">
@@ -261,7 +261,6 @@
         function scroll(){
             $('.main-card-body').scrollTop($('.main-card-body')[0].scrollHeight);
         };
-        body.onload = scroll();
 
         function submit(id){
             $("#"+id).submit();
