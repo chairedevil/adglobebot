@@ -284,8 +284,11 @@
                 document.querySelector("#sendBtn").click();
             }
         });
+
+        let count = 0;
         
         function sendText(){
+            let loadIndicator = false;
             let text = document.querySelector("#input").value;
             if(text){
                 //console.log(text);
@@ -329,6 +332,7 @@
                         let $indicator = result.messages[0].additionalParameters.type;
                         //console.log($indicator);
                         $replyTime = getTime();
+                        
                         if($indicator == 'translate'){
                             $botText = '<div class="row justify-content-start mb-1">';
                             $botText = $botText+'<div class="card" style="max-width: 300px">';
@@ -345,7 +349,8 @@
                                 $botText = '<div class="row justify-content-start mb-1">';
                                 $botText = $botText+'<div class="card" style="max-width: 300px;">';
                                 $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
-                                $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.imgSrc +'" alt="" class="card-img-top instImg">';
+                                $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.imgSrc +'" alt="" class="card-img-top instImg" id="imgId'+ count +'">';
+                                loadIndicator = true;
                                 $botText = $botText+'<div class="card-body p-2">';
                                 
                                 let captionEnd = (result.messages[0].additionalParameters.caption).length>70?'...</p>':'</p>';
@@ -373,7 +378,8 @@
                                 $botText = $botText+'<div class="card" style="max-width: 300px;">';
                                 $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
                                 if(result.messages[0].additionalParameters.media!=null){
-                                    $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.media +'" alt="" class="card-img-top instImg">';
+                                    $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.media +'" alt="" class="card-img-top instImg" id="imgId'+ count +'">';
+                                    loadIndicator = true;
                                 }
                                 $botText = $botText+'<div class="card-body p-2">';
                                 $botText = $botText+'<p class="card-text">'+ result.messages[0].additionalParameters.text +'</p>';
@@ -409,6 +415,13 @@
                         $('.displayArea').append($botText);
                         $botText = "";
                         scroll();
+                        if(loadIndicator){
+                            let imgId = $("#imgId"+count);
+                            if(imgId.complete){
+                                scroll();
+                            }
+                            count++;
+                        }
                     }, error: function(){
                         $replyTime = getTime();
                         $botText = '<div class="row justify-content-start mb-1">';
