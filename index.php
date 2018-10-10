@@ -261,7 +261,7 @@
         function scroll(){
             $('.main-card-body').scrollTop($('.main-card-body')[0].scrollHeight);
         };
-        window.onload = scroll();
+        body.onload = scroll();
 
         function submit(id){
             $("#"+id).submit();
