@@ -37,8 +37,11 @@ $botman->hears('i@{userId}', function ($bot, $userId) {
     if(!$instaData['error']){
         $bot->reply('inst', [
             'type' => 'instagram',
+            'userName' => $instaData['userName'],
+            'fullName' => $instaData['fullName'],
             'imgSrc' => $instaData['imgSrc'],
             'caption' => $instaData['caption'],
+            'date' => $instaData['date'],
             'error' => false
         ]);
     }else{

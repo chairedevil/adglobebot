@@ -14,12 +14,16 @@ try {
     //print_r($feed);
     //echo "</pre>";
 
-    echo $img['userName'] = $feed->getUserName();
-    echo $img['fullName'] = $feed->fullName();
-    echo $img['thumSrc'] = $feed->getMedias()[0]->getThumbnailSrc();
-    echo $img['imgSrc'] = $feed->getMedias()[0]->getDisplaySrc();
-    echo $img['caption'] = $feed->getMedias()[0]->getCaption();
-    echo $img['date'] = $feed->getMedias()[0]->getDate();
+    $img['userName'] = $feed->getUserName();
+    $img['fullName'] = $feed->getFullName();
+    $img['thumSrc'] = $feed->getMedias()[0]->getThumbnailSrc();
+    $img['imgSrc'] = $feed->getMedias()[0]->getDisplaySrc();
+    $img['caption'] = $feed->getMedias()[0]->getCaption();
+    $img['date'] = $feed->getMedias()[0]->getDate();
+
+    echo "<pre>";
+    print_r($img);
+    echo "</pre>";
 
 } catch (Exception $exception) {
     //print_r($exception->getMessage());
