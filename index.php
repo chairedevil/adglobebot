@@ -51,7 +51,7 @@
         }
 
         .top_header{
-            height: 100px;
+            min-height: 100px;
         }
 
         .card-header{
