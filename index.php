@@ -383,7 +383,7 @@
                                 $botText = $botText+'<div class="card" style="max-width: 300px;">';
                                 $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
                                 if(result.messages[0].additionalParameters.media!=null){
-                                    $botText = $botText+'<img src="'+ result.messages[0].additionalnParameters.media +'" alt="" class="card-img-top instImg" id="imgId'+ count +'">';
+                                    $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.media +'" alt="" class="card-img-top instImg" id="imgId'+ count +'">';
                                     loadIndicator = true;
                                 }
                                 $botText = $botText+'<div class="card-body p-2">';
