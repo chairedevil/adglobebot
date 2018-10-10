@@ -15,7 +15,7 @@ try {
     //echo "</pre>";
 
     $img['userName'] = $feed->getUserName();
-    $img['fullName'] = $feed->fullName();
+    $img['fullName'] = $feed->getFullName();
     $img['thumSrc'] = $feed->getMedias()[0]->getThumbnailSrc();
     $img['imgSrc'] = $feed->getMedias()[0]->getDisplaySrc();
     $img['caption'] = $feed->getMedias()[0]->getCaption();
