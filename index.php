@@ -415,12 +415,9 @@
                         $('.displayArea').append($botText);
                         $botText = "";
                         scroll();
-                        console.log(loadIndicator);
                         if(loadIndicator){
                             let imgId = document.querySelector("#imgId"+count);
-                            console.log("#imgId"+count);
                             imgId.onload = function(){
-                                console.log("loaded");
                                 scroll();
                             }
                             count++;
