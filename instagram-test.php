@@ -4,7 +4,7 @@ require_once ('vendor/autoload.php');
 $cache = new Instagram\Storage\CacheManager('instragram_cache');
 
 $api = new Instagram\Api($cache);
-$api->setUserName('chairedevjj');
+$api->setUserName('chairedevil');
 
 try {
     $feed = $api->getFeed();
