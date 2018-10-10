@@ -417,12 +417,9 @@
                         scroll();
                         console.log(loadIndicator);
                         if(loadIndicator){
-                            let imgId = $("#imgId"+count);
+                            let imgId = document.querySelector("#imgId"+count);
                             console.log("#imgId"+count);
-                            if(imgId.complete){
-                                console.log("loaded");
-                                scroll();
-                            }
+                            imgId.onload = scroll();
                             count++;
                         }
                     }, error: function(){
