@@ -50,6 +50,10 @@
             margin-bottom: 20px;
         }
 
+        .top_header{
+            min-height: 100px;
+        }
+
         .card-header{
             background-color: #244063;
         }
@@ -136,11 +140,11 @@
 
     </style>
 </head>
-<body>
+<body onload="scroll()">
     <div class="container">
         <div class="row">
             <div class="main-card card">
-                <div class="card-header text-white d-flex justify-content-center align-items-center">
+                <div class="card-header text-white d-flex justify-content-center align-items-center top_header">
                     <img class="m-4 mr-auto" src="img/logo_white.png" alt="adglobe">
                     <!--not login-->
                     <?php if($accToken==""){ ?>
@@ -280,8 +284,11 @@
                 document.querySelector("#sendBtn").click();
             }
         });
+
+        let count = 0;
         
         function sendText(){
+            let loadIndicator = false;
             let text = document.querySelector("#input").value;
             if(text){
                 //console.log(text);
@@ -325,6 +332,7 @@
                         let $indicator = result.messages[0].additionalParameters.type;
                         //console.log($indicator);
                         $replyTime = getTime();
+                        
                         if($indicator == 'translate'){
                             $botText = '<div class="row justify-content-start mb-1">';
                             $botText = $botText+'<div class="card" style="max-width: 300px">';
@@ -341,7 +349,8 @@
                                 $botText = '<div class="row justify-content-start mb-1">';
                                 $botText = $botText+'<div class="card" style="max-width: 300px;">';
                                 $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
-                                $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.imgSrc +'" alt="" class="card-img-top instImg">';
+                                $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.imgSrc +'" alt="" class="card-img-top instImg" id="imgId'+ count +'">';
+                                loadIndicator = true;
                                 $botText = $botText+'<div class="card-body p-2">';
                                 
                                 let captionEnd = (result.messages[0].additionalParameters.caption).length>70?'...</p>':'</p>';
@@ -369,7 +378,8 @@
                                 $botText = $botText+'<div class="card" style="max-width: 300px;">';
                                 $botText = $botText+'<div class="card-header msgHeader">Bot</div>';
                                 if(result.messages[0].additionalParameters.media!=null){
-                                    $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.media +'" alt="" class="card-img-top instImg">';
+                                    $botText = $botText+'<img src="'+ result.messages[0].additionalParameters.media +'" alt="" class="card-img-top instImg" id="imgId'+ count +'">';
+                                    loadIndicator = true;
                                 }
                                 $botText = $botText+'<div class="card-body p-2">';
                                 $botText = $botText+'<p class="card-text">'+ result.messages[0].additionalParameters.text +'</p>';
@@ -377,6 +387,14 @@
                                 $botText = $botText+'</div>';
                                 $botText = $botText+'<div class="card-footer text-muted text-right bg-white msgTime">'+ $replyTime +'</div>';
                                 $botText = $botText+'</div>';
+                                let testDate = result.messages[0].additionalParameters.created_at;
+                                let dateArray = testDate.split(" ");
+                                console.log(dateArray[0]);
+                                console.log(dateArray[1]);
+                                console.log(dateArray[2]);
+                                console.log(dateArray[3]);
+                                console.log(dateArray[4]);
+                                console.log(dateArray[5]);
                             }else{
                                 $botText = '<div class="row justify-content-start mb-1">';
                                 $botText = $botText+'<div class="card" style="max-width: 300px">';
@@ -405,6 +423,13 @@
                         $('.displayArea').append($botText);
                         $botText = "";
                         scroll();
+                        if(loadIndicator){
+                            let imgId = document.querySelector("#imgId"+count);
+                            imgId.onload = function(){
+                                scroll();
+                            }
+                            count++;
+                        }
                     }, error: function(){
                         $replyTime = getTime();
                         $botText = '<div class="row justify-content-start mb-1">';
