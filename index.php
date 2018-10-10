@@ -358,7 +358,8 @@
                                 $botText = $botText+'<p class="card-text">'+ (result.messages[0].additionalParameters.caption).substring(0,70) + captionEnd;
 
                                 let postDate = result.messages[0].additionalParameters.date;
-                                console.log(postDate.date);
+                                let dateArray = postDate.date.split(".");
+                                console.log(dateArray[0]);
                                 
                                 $botText = $botText+'<p class="card-text text-right text-muted font-italic twitter_account">'+ postDate.date +'<br>-'+ result.messages[0].additionalParameters.fullName +'-</p>';
                                 $botText = $botText+'</div>';
