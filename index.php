@@ -261,6 +261,7 @@
         function scroll(){
             $('.main-card-body').scrollTop($('.main-card-body')[0].scrollHeight);
         };
+        window.onload = scroll();
 
         function submit(id){
             $("#"+id).submit();
@@ -415,6 +416,7 @@
                         $('.displayArea').append($botText);
                         $botText = "";
                         scroll();
+                        console.log(loadIndicator);
                         if(loadIndicator){
                             let imgId = $("#imgId"+count);
                             if(imgId.complete){
